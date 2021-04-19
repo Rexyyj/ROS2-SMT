@@ -112,8 +112,8 @@ class SMTNodeRelation:
 		self.build_edges(self.topicPub,self.topicSub,"topic")
 		self.build_edges(self.serviceSrv,self.serviceCli,"service")
 		self.build_edges(self.actionSrv,self.actionCli,"action")
-		self.csv_writer(self.store_Path+"vertices.csv",["node_name","name_space","name"],self.vertices)
-		self.csv_writer(self.store_Path+"edges.csv",["start","end","type","type_name"],self.edges)
+		self.csv_writer(self.store_Path+"vertices.csv",["id","name_space","name"],self.vertices)
+		self.csv_writer(self.store_Path+"edges.csv",["src","dst","type","type_name"],self.edges)
 		
 
 
