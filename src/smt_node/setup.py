@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'smt-node'
+package_name = 'smt_node'
 
 setup(
     name=package_name,
@@ -15,11 +15,12 @@ setup(
     zip_safe=True,
     maintainer='Rex Yu',
     maintainer_email='jiafish@outlook.com',
-    description='package to obtain and store existing nodes',
-    license='Apache-2.0 License ',
+    description='A simple node to obtain node relationships in running ros2 system',
+    license='Apache-2.0 License',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'smt_node = smt_node.smt_node:main'
         ],
     },
 )

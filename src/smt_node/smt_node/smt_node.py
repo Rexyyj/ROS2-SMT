@@ -115,13 +115,15 @@ class SMTNodeRelation:
 		self.csv_writer(self.store_Path+"vertices.csv",["id","name_space","name"],self.vertices)
 		self.csv_writer(self.store_Path+"edges.csv",["src","dst","type","type_name"],self.edges)
 		
+def main():
+    parser = argparse.ArgumentParser()
+    smtNodeRelation = SMTNodeRelation()
+    smtNodeRelation.add_arguments(parser)
+    smtNodeRelation.main(parser.parse_args())
 
 
 if __name__ == "__main__":
-	parser = argparse.ArgumentParser()
-	smtNodeRelation = SMTNodeRelation()
-	smtNodeRelation.add_arguments(parser)
-	smtNodeRelation.main(parser.parse_args())
+	main()
 
 
 

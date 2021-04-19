@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>smt-node</name>
+  <name>smt_node</name>
   <version>0.0.0</version>
-  <description>package to obtain and store existing nodes</description>
+  <description>A simple node to obtain node relationships in running ros2 system</description>
   <maintainer email="jiafish@outlook.com">Rex Yu</maintainer>
-  <license>Apache-2.0 License </license>
+  <license>Apache-2.0 License</license>
+
+  <depend>rclpy</depend>
+  <depend>ros2cli</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
