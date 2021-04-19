@@ -3,20 +3,19 @@ import csv
 from ros2node.api import get_node_names
 from ros2node.api import get_publisher_info
 from ros2node.api import get_subscriber_info
-
-from ros2cli.node.strategy import NodeStrategy
-from ros2cli.node.strategy import add_arguments
-
-from ros2node.api import get_publisher_info
-from ros2node.api import get_subscriber_info
 from ros2node.api import get_service_server_info
 from ros2node.api import get_service_client_info
 from ros2node.api import get_action_client_info
 from ros2node.api import get_action_server_info
 
+from ros2cli.node.strategy import NodeStrategy
+from ros2cli.node.strategy import add_arguments
+from rclpy.node import HIDDEN_NODE_PREFIX
+
+
 class SMTNodeRelation:
 
-	def __init__(self,store_path="./"):
+	def __init__(self, store_path="./"):
 		self.store_Path = store_path
 		self.vertices = []
 		self.edges = []
@@ -24,8 +23,12 @@ class SMTNodeRelation:
 		self.topicSub = {}
 		self.serviceSrv = {}
 		self.serviceCli = {}
-		self.actionSrv ={}
+		self.actionSrv = {}
 		self.actionCli = {}
+
+	def _is_hidden_name(self,name):
+		# note, we're assuming the hidden node prefix is the same for other hidden names
+		return any(part.startswith(HIDDEN_NODE_PREFIX) for part in name.split('/'))
 
 	def add_arguments(self, parser):
 		add_arguments(parser)
@@ -35,20 +38,20 @@ class SMTNodeRelation:
 		parser.add_argument(
 		'-c', '--count-nodes', action='store_true',
 		help='Only display the number of nodes discovered')
-	
-	def check_dic_key_exist(self,dic,key):
+
+	def check_dic_key_exist(self, dic, key):
 		if key in dic.keys():
 			return True
 		else:
 			return False
 
-	def add_node_to_dic(self,dic,key,node_name):
-		if self.check_dic_key_exist(dic,key):
+	def add_node_to_dic(self, dic, key, node_name):
+		if self.check_dic_key_exist(dic, key):
 			temp_list = dic[key]
 		else:
 			temp_list = []
 		temp_list.append(node_name)
-		dic[key]=temp_list
+		dic[key] = temp_list
 
 	def get_node_info(self, args):
 		with NodeStrategy(args) as node:
@@ -56,7 +59,8 @@ class SMTNodeRelation:
 
 			for node_name in node_names:
 				full_name = node_name.full_name
-				self.vertices.append([full_name,node_name.namespace,node_name.name])
+				node_type = self._is_hidden_name(full_name)
+				self.vertices.append([full_name,node_name.namespace,node_name.name,node_type])
 
 				publishers = get_publisher_info(node=node, remote_node_name=full_name, include_hidden=True)
 				for pub in publishers:
