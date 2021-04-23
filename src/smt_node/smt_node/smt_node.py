@@ -1,5 +1,6 @@
 import argparse
 import csv
+import time
 from ros2node.api import get_node_names
 from ros2node.api import get_publisher_info
 from ros2node.api import get_subscriber_info
@@ -17,6 +18,7 @@ class SMTNodeRelation:
 
 	def __init__(self, store_path="./"):
 		self.store_Path = store_path
+		self.vertices_name = set()
 		self.vertices = []
 		self.edges = []
 		self.topicPub = {}
@@ -50,6 +52,9 @@ class SMTNodeRelation:
 			temp_list = dic[key]
 		else:
 			temp_list = []
+		for val in temp_list:
+			if val == node_name:
+				return
 		temp_list.append(node_name)
 		dic[key] = temp_list
 
@@ -60,7 +65,10 @@ class SMTNodeRelation:
 			for node_name in node_names:
 				full_name = node_name.full_name
 				node_type = self._is_hidden_name(full_name)
-				self.vertices.append([full_name,node_name.namespace,node_name.name,node_type])
+				if full_name not in self.vertices_name:
+					self.vertices_name.add(full_name)
+					self.vertices.append([full_name,node_name.namespace,node_name.name,node_type])
+				
 
 				publishers = get_publisher_info(node=node, remote_node_name=full_name, include_hidden=True)
 				for pub in publishers:
@@ -110,15 +118,27 @@ class SMTNodeRelation:
 
 		
 def main():
-    parser = argparse.ArgumentParser()
-    smtNodeRelation = SMTNodeRelation()
-    smtNodeRelation.add_arguments(parser)
-    smtNodeRelation.get_node_info(parser.parse_args())
-    smtNodeRelation.build_edges(smtNodeRelation.topicPub,smtNodeRelation.topicSub,"topic")
-    smtNodeRelation.build_edges(smtNodeRelation.serviceSrv,smtNodeRelation.serviceCli,"service")
-    smtNodeRelation.build_edges(smtNodeRelation.actionSrv,smtNodeRelation.actionCli,"action")
-    smtNodeRelation.csv_writer(smtNodeRelation.store_Path+"vertices.csv",["id","name_space","name"],smtNodeRelation.vertices)
-    smtNodeRelation.csv_writer(smtNodeRelation.store_Path+"edges.csv",["src","dst","type","type_name"],smtNodeRelation.edges)
+	counter =0
+	parser = argparse.ArgumentParser()
+	smtNodeRelation = SMTNodeRelation()
+	smtNodeRelation.add_arguments(parser)
+	try:
+		print("Starting scanning system, use Ctrl+C to stop scanning")
+		while True:
+			counter =counter+1
+			smtNodeRelation.get_node_info(parser.parse_args())
+			time.sleep(0.1)
+			if counter%50 ==0:
+				print("Scanning system relationship...")
+	except KeyboardInterrupt:
+		pass
+	print("Rebuilding system relationship...")
+	smtNodeRelation.build_edges(smtNodeRelation.topicPub,smtNodeRelation.topicSub,"topic")
+	smtNodeRelation.build_edges(smtNodeRelation.serviceSrv,smtNodeRelation.serviceCli,"service")
+	smtNodeRelation.build_edges(smtNodeRelation.actionSrv,smtNodeRelation.actionCli,"action")
+	print("Saving system...")
+	smtNodeRelation.csv_writer(smtNodeRelation.store_Path+"vertices.csv",["id","name_space","name"],smtNodeRelation.vertices)
+	smtNodeRelation.csv_writer(smtNodeRelation.store_Path+"edges.csv",["src","dst","type","type_name"],smtNodeRelation.edges)
 
 if __name__ == "__main__":
 	main()
