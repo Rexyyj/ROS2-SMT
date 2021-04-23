@@ -111,7 +111,7 @@ class SMTNodeRelation:
 	
 	def csv_writer(self,filename,header,datas):
 		with open(filename, 'w', newline='') as csvfile:
-			writer = csv.writer(csvfile, delimiter=' ')
+			writer = csv.writer(csvfile, delimiter=',')
 			writer.writerow(header)
 			for data in datas:
 				writer.writerow(data)
@@ -137,7 +137,7 @@ def main():
 	smtNodeRelation.build_edges(smtNodeRelation.serviceSrv,smtNodeRelation.serviceCli,"service")
 	smtNodeRelation.build_edges(smtNodeRelation.actionSrv,smtNodeRelation.actionCli,"action")
 	print("Saving system...")
-	smtNodeRelation.csv_writer(smtNodeRelation.store_Path+"vertices.csv",["id","name_space","name"],smtNodeRelation.vertices)
+	smtNodeRelation.csv_writer(smtNodeRelation.store_Path+"vertices.csv",["id","name_space","name","is_hidden"],smtNodeRelation.vertices)
 	smtNodeRelation.csv_writer(smtNodeRelation.store_Path+"edges.csv",["src","dst","type","type_name"],smtNodeRelation.edges)
 
 if __name__ == "__main__":
