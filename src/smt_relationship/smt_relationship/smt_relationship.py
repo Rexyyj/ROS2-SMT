@@ -32,7 +32,7 @@ class SMT_RELATIONSHIP:
 	
 
 	def udf_define(self):
-		self.spark.udf.register("is_hidden",self._is_hidden_name)
+		self.spark.udf.register("is_hidden",lambda name:any(part.startswith("_") for part in name.split('/')))
 	
 	def _is_hidden_name(self,name):
 		# note, we're assuming the hidden node prefix is the same for other hidden names
@@ -49,11 +49,10 @@ class SMT_RELATIONSHIP:
 		# topicAnalyzer.remove_all_hidden()
 		# topicAnalyzer.create_graph()
 		# g = topicAnalyzer.get_graph()
-		temp = g.edges.filter("is_hidden(src)=='False' and \
-							is_hidden(dst)=='False' and \
-							is_hidden(type_name)=='False'")
-		print(g.vertices.count())
-		print(g.edges.count())
+		temp = g.edges.filter("is_hidden(src)==False and \
+							is_hidden(dst)==False and \
+							is_hidden(type_name)==False")
+		print(temp.count())
 
 		
 
