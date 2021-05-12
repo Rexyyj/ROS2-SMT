@@ -1,0 +1,8 @@
+# pyspark version: 3.1.1
+# graphframes version: 0.8.1
+# JDK version: 8
+
+pip3 install pyspark
+sudo apt install openjdk-8-jdk openjdk-8-jre
+cd ~/.local/lib/python3.8/site-packages/pyspark/bin/
+./pyspark --packages graphframes:graphframes:0.8.1-spark3.0-s_2.12 --repositories https://repos.spark-packages.org/
