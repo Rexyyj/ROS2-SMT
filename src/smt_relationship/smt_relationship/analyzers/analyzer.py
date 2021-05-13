@@ -1,5 +1,10 @@
 from graphframes import GraphFrame
 from pyspark.sql import SparkSession
+
+DEFAULT_EDGES = {"parameter_events","rosout","describe_parameters",\
+					"get_parameter_types","get_parameters","list_parameters",\
+					"set_parameters","set_parameters_atomically"}
+
 class Analyzer(object):
 	
 	def __init__(self,vertices,edges):
@@ -7,10 +12,13 @@ class Analyzer(object):
 		self._vertices =vertices
 		self._edges = edges
 		self._graph = None
+
+
 		self.define_udf()
 
 	def define_udf(self):
 		self.spark.udf.register("is_hidden",lambda name:any(part.startswith("_") for part in name.split('/')))
+		self.spark.udf.register("is_default",lambda edge: any(part in DEFAULT_EDGES for part in edge.split('/')))
 
 	def remove_hidden_vertices(self):
 		self._vertices = self._vertices.filter("is_hidden =='False'")
@@ -23,6 +31,9 @@ class Analyzer(object):
 	def remove_all_hidden(self):
 		self.remove_hidden_edges()
 		self.remove_hidden_vertices()
+
+	def remove_default_edges(self):
+		self._edges = self._edges.filter("is_default(type_name)==False")
 
 	def create_graph(self,drop=False):
 		v = self._vertices

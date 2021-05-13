@@ -39,10 +39,12 @@ class SMT_RELATIONSHIP:
 		print(g.edges.count())
 		topicAnalyzer = Topic_Analyzer(v,e)
 		topicAnalyzer.remove_all_hidden()
+		topicAnalyzer.remove_default_edges()
 		topicAnalyzer.create_graph()
 		g = topicAnalyzer.get_graph()
 		print(g.vertices.count())
-		print(g.edges.count())		
+		print(g.edges.count())	
+		topicAnalyzer.connected_group()
 
 		
 
