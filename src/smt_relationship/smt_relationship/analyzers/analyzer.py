@@ -7,15 +7,18 @@ class Analyzer(object):
 		self._vertices =vertices
 		self._edges = edges
 		self._graph = None
+		self.define_udf()
 
+	def define_udf(self):
+		self.spark.udf.register("is_hidden",lambda name:any(part.startswith("_") for part in name.split('/')))
 
 	def remove_hidden_vertices(self):
 		self._vertices = self._vertices.filter("is_hidden =='False'")
 
 	def remove_hidden_edges(self):
-		self._edges = self._edges.filter("is_hidden(src)=='False' and \
-										is_hidden(dst)=='False' and \
-										is_hidden(type_name)=='False'")
+		self._edges = self._edges.filter("is_hidden(src)==False and \
+										is_hidden(dst)==False and \
+										is_hidden(type_name)==False")
 
 	def remove_all_hidden(self):
 		self.remove_hidden_edges()
