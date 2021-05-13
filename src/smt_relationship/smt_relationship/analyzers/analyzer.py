@@ -21,18 +21,26 @@ class Analyzer(object):
 		self.spark.udf.register("is_default",lambda edge: any(part in DEFAULT_EDGES for part in edge.split('/')))
 
 	def remove_hidden_vertices(self):
+		if self._graph!=None:
+			raise RuntimeError("Graph already fixed...")
 		self._vertices = self._vertices.filter("is_hidden =='False'")
 
 	def remove_hidden_edges(self):
+		if self._graph!=None:
+			raise RuntimeError("Graph already fixed...")
 		self._edges = self._edges.filter("is_hidden(src)==False and \
 										is_hidden(dst)==False and \
 										is_hidden(type_name)==False")
 
 	def remove_all_hidden(self):
+		if self._graph!=None:
+			raise RuntimeError("Graph already fixed...")
 		self.remove_hidden_edges()
 		self.remove_hidden_vertices()
 
 	def remove_default_edges(self):
+		if self._graph!=None:
+			raise RuntimeError("Graph already fixed...")
 		self._edges = self._edges.filter("is_default(type_name)==False")
 
 	def create_graph(self,drop=False):

@@ -8,7 +8,9 @@ class Topic_Analyzer(Analyzer):
 		pass
 
 	def connected_group(self):
-		connComp=self._graph.stronglyConnectedComponents(maxIter=10)
+		if self._graph == None:
+			raise RuntimeError("Graph undefined...")
+		connComp=self._graph.stronglyConnectedComponents(maxIter=3)
 		connComp.orderBy("component").show()
 		nComp = connComp.select("component").distinct().count()
 		print("Num of groups: "+str(nComp))
