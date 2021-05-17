@@ -44,7 +44,7 @@ class SMT_RELATIONSHIP:
 		g = topicAnalyzer.get_graph()
 		print(g.vertices.count())
 		print(g.edges.count())	
-		topicAnalyzer.connected_group()
+		topicAnalyzer.find_starting_vertices()
 
 		
 
