@@ -2,5 +2,3 @@
 /install/*
 /log/*
 /ckpt/*
-edges.csv
-vertices.csv
