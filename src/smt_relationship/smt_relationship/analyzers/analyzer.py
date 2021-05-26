@@ -5,6 +5,7 @@ DEFAULT_EDGES = {"parameter_events", "rosout", "describe_parameters",
                  "get_parameter_types", "get_parameters", "list_parameters",
                                         "set_parameters", "set_parameters_atomically"}
 
+
 class Analyzer(object):
 
     def __init__(self, vertices, edges):
