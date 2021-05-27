@@ -1,4 +1,5 @@
 from graphframes import GraphFrame
+from pyspark.sql import group
 from smt_relationship.analyzers.analyzer import Analyzer
 
 
@@ -33,23 +34,32 @@ class Topic_Analyzer(Analyzer):
                     sub.add(relation[3])
             self.group_policy[comp] = {"members": list(
                 members), "allowPub": list(pub), "allowSub": list(sub)}
-        # pubFrame = connComp.join(self._edges,connComp.id==self._edge)
-        # self._edges.show()
 
-    def find_starting_vertices(self):
-        src = set([row.src for row in self._edges.select("src").collect()])
-        dst = set([row.dst for row in self._edges.select("dst").collect()])
-        result = set({})
-        for ver in set([row.id for row in self._vertices.select("id").collect()]):
-            if ver in src and ver not in dst:
-                result.add(ver)
-        return result
+    def RBAC_grouping(self, mode="namespace"):
+        self.group_policy = {}
+        if mode == "namespace":
+            keys = [row.name_space for row in self._graph.vertices.select(
+                "name_space").distinct().collect()]
+            group_num = 0
+            for key in keys:
+                members = set([row.id for row in self._graph.vertices.filter(
+                    "name_space=='"+str(key)+"'").select("id").collect()])
+                self.group_policy["group"+str(group_num)] = self.members_to_policy(members)
+                group_num += 1
+        elif mode == "start-middle-end":
+            self.group_policy["start"]=self.members_to_policy(self.find_starting_vertices())
+            self.group_policy["middle"]=self.members_to_policy(self.find_middleware_vertices())
+            self.group_policy["end"] = self.members_to_policy(self.find_ending_vertices())
+        else:
+            raise ValueError()
 
-    def find_ending_vertices(self):
-        pass
-
-    def find_middleware_vertices(self):
-        pass
+    def members_to_policy(self,members):
+        for member in members:
+            pub = set([row.type_name for row in self._graph.edges.filter(
+                "src=='"+member+"'").select("type_name").collect()])
+            sub = set([row.type_name for row in self._graph.edges.filter(
+                "dst=='"+member+"'").select("type_name").collect()])
+        return {"members": list(members), "allowPub": list(pub), "allowSub": list(sub)}
 
     def get_group_policy(self):
         return self.group_policy
