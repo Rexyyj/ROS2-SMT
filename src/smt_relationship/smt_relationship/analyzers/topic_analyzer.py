@@ -46,14 +46,16 @@ class Topic_Analyzer(Analyzer):
                     "name_space=='"+str(key)+"'").select("id").collect()])
                 self.group_policy["group"+str(group_num)] = self.members_to_policy(members)
                 group_num += 1
+
         elif mode == "start-middle-end":
-            self.group_policy["start"]=self.members_to_policy(self.find_starting_vertices())
-            self.group_policy["middle"]=self.members_to_policy(self.find_middleware_vertices())
+            self.group_policy["start"] = self.members_to_policy(self.find_starting_vertices())
+            self.group_policy["middle"] = self.members_to_policy(self.find_middleware_vertices())
             self.group_policy["end"] = self.members_to_policy(self.find_ending_vertices())
+
         else:
             raise ValueError()
 
-    def members_to_policy(self,members):
+    def members_to_policy(self, members):
         for member in members:
             pub = set([row.type_name for row in self._graph.edges.filter(
                 "src=='"+member+"'").select("type_name").collect()])
