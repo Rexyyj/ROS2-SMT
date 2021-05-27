@@ -2,3 +2,4 @@
 /install/*
 /log/*
 /ckpt/*
+*/__pycache__/*
