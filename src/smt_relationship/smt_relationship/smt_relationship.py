@@ -45,7 +45,7 @@ class SMT_RELATIONSHIP:
         g = topicAnalyzer.get_graph()
         print(g.vertices.count())
         print(g.edges.count())
-        topicAnalyzer.strongly_connected_grouping()
+        topicAnalyzer.RBAC_grouping(mode="start-middle-end")
         print(topicAnalyzer.get_group_policy())
 
 

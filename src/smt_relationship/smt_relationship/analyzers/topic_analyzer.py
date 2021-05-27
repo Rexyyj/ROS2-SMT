@@ -40,6 +40,8 @@ class Topic_Analyzer(Analyzer):
         if mode == "namespace":
             keys = [row.name_space for row in self._graph.vertices.select(
                 "name_space").distinct().collect()]
+            print(keys)
+            print("\n")
             group_num = 0
             for key in keys:
                 members = set([row.id for row in self._graph.vertices.filter(
