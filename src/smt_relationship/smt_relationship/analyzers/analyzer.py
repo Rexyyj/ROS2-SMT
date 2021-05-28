@@ -1,4 +1,4 @@
-from graphframes import GraphFrame
+from graphframes import GraphFrame, graphframe
 from pyspark.sql import SparkSession
 
 DEFAULT_EDGES = {"parameter_events", "rosout", "describe_parameters",
@@ -22,7 +22,7 @@ class Analyzer(object):
         self.spark.udf.register("is_default", lambda edge: any(
             part in DEFAULT_EDGES for part in edge.split('/')))
 
-    def remove_hidden_vertices(self):
+    def remove_hidden_vertices(self) -> graphframe.DataFrame:
         if self._graph != None:
             raise RuntimeError("Graph already fixed...")
         self._vertices = self._vertices.filter("is_hidden =='False'")

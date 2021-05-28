@@ -8,7 +8,7 @@ import sys
 
 class SMT_RELATIONSHIP:
 
-    def __init__(self, from_file=True, ckpt_dir="./ckpt"):
+    def __init__(self, from_file=True, ckpt_dir="./ckpt", vertices=[], edges=[]):
         conf = SparkConf().setAppName("Analyzer")
         conf.set("spark.jars.packages", "graphframes:graphframes:0.8.1-spark3.0-s_2.12")
         conf.set("spark.jars.repositories", "https://repos.spark-packages.org/")
@@ -28,8 +28,8 @@ class SMT_RELATIONSHIP:
                                               inferSchema=True,
                                               sep=',')
         else:
-            # ToDo:
-            # Directly get vertices and edges form system
+            self.vertices = vertices
+            self.edges = edges
             pass
 
     def test(self):
