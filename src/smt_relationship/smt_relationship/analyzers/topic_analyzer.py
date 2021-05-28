@@ -9,7 +9,6 @@ class Topic_Analyzer(Analyzer):
         super(Topic_Analyzer, self).__init__(vertices, edges)
         self.group_policy = {}
         # {"group0":{"members":["a","b"],"pub":["topic1","topic2"],"sub":["topic1","topic2"]}}
-        pass
 
     def strongly_connected_grouping(self):
         if self._graph == None:

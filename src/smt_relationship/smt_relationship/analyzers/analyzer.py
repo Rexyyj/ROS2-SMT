@@ -22,7 +22,7 @@ class Analyzer(object):
         self.spark.udf.register("is_default", lambda edge: any(
             part in DEFAULT_EDGES for part in edge.split('/')))
 
-    def remove_hidden_vertices(self) -> graphframe.DataFrame:
+    def remove_hidden_vertices(self):
         if self._graph != None:
             raise RuntimeError("Graph already fixed...")
         self._vertices = self._vertices.filter("is_hidden =='False'")
