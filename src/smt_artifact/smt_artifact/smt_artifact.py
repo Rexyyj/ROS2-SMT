@@ -5,6 +5,7 @@ from cryptography.hazmat.backends import default_backend as cryptography_backend
 from cryptography.hazmat.primitives import serialization
 from smt_artifact.managers.dir_manager import DIR_MANAGER
 from smt_artifact.managers.governance_manager import GOVERNANCE_MANAGER
+import time
 _KS_ENCLAVES = 'enclaves'
 _KS_PUBLIC = 'public'
 _KS_PRIVATE = 'private'
@@ -35,22 +36,15 @@ class SMT_ARTIFACT():
             with open(key_path, 'rb') as key_file:
                 self.key = serialization.load_pem_private_key(key_file.read(), None, cryptography_backend())
 
-
-    def create_keystore(self):
-        dir_manager = DIR_MANAGER(self.key,self.cer)
-        dir_manager.create_group_keystore(self.parent_dir,self.keystores)
-
-    def create_governance(self):
-        governance_manager = GOVERNANCE_MANAGER(self.key,self.cer)
-        governance_manager.create_governances(self.keystores)
-
+        self.dir_manager = DIR_MANAGER(self.key,self.cer)
+        self.governance_manager = GOVERNANCE_MANAGER(self.key,self.cer)
 
 
     def main(self):
         print('Hi from smt_artifact.')
-        self.create_keystore()
-        self.create_governance()
-
+        self.dir_manager.create_group_keystore(self.parent_dir,self.keystores)
+        self.governance_manager.create_governances(self.keystores)
+        self.dir_manager.create_group_permission_dir(self.parent_dir,self.keystores)
 
 
 def main():
