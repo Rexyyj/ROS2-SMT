@@ -59,7 +59,7 @@ class Analyzer(object):
     def get_graph(self):
         return self._graph
 
-    def find_starting_vertices(self):
+    def find_source_vertices(self):
         src = set([row.src for row in self._graph.edges.select("src").collect()])
         dst = set([row.dst for row in self._graph.edges.select("dst").collect()])
         result = set({})
@@ -68,7 +68,7 @@ class Analyzer(object):
                 result.add(ver)
         return result
 
-    def find_ending_vertices(self):
+    def find_destination_vertices(self):
         src = set([row.src for row in self._graph.edges.select("src").collect()])
         dst = set([row.dst for row in self._graph.edges.select("dst").collect()])
         result = set({})
@@ -78,6 +78,6 @@ class Analyzer(object):
         return result
 
     def find_middleware_vertices(self):
-        starting = self.find_starting_vertices()
-        ending = self.find_ending_vertices()
+        starting = self.find_source_vertices()
+        ending = self.find_destination_vertices()
         return (set([row.id for row in self._graph.vertices.select("id").collect()])-starting-ending)

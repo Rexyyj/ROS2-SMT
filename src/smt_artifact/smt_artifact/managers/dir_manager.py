@@ -1,9 +1,9 @@
 from sros2 import _utilities
 from pathlib import Path
-from smt_artifact.managers.common_manager import COMMON_MANAGER
+from smt_artifact.managers.common_manager import Common_Manager
 
 
-class DIR_MANAGER(COMMON_MANAGER):
+class Dir_Manager(Common_Manager):
     def __init__(self, key, cer,
                  _KS_ENCLAVES='enclaves',
                  _KS_PUBLIC='public',
@@ -97,7 +97,7 @@ class DIR_MANAGER(COMMON_MANAGER):
 
     def create_permission_dir(self,keystore_path):
         permission_dir = keystore_path.joinpath(self._KS_ENCLAVES,keystore_path.name)
-        permission_dir.mkdir(parents=True, exist_ok=False)
+        permission_dir.mkdir(parents=True, exist_ok=True)
         _utilities.create_symlink(src=Path("../governance.p7s"),dst=permission_dir.joinpath("governance.p7s"))
         _utilities.create_symlink(src=Path("../../public/identity_ca.cert.pem"),dst=permission_dir.joinpath("identity_ca.cert.pem"))
         _utilities.create_symlink(src=Path("../../public/permissions_ca.cert.pem"),dst=permission_dir.joinpath("permissions_ca.cert.pem"))

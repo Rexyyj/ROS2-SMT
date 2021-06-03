@@ -3,8 +3,8 @@ from sros2 import _utilities
 from cryptography import x509
 from cryptography.hazmat.backends import default_backend as cryptography_backend
 from cryptography.hazmat.primitives import serialization
-from smt_artifact.managers.dir_manager import DIR_MANAGER
-from smt_artifact.managers.governance_manager import GOVERNANCE_MANAGER
+from smt_artifact.managers.dir_manager import Dir_Manager
+from smt_artifact.managers.governance_manager import Governance_Manager
 import time
 _KS_ENCLAVES = 'enclaves'
 _KS_PUBLIC = 'public'
@@ -36,8 +36,8 @@ class SMT_ARTIFACT():
             with open(key_path, 'rb') as key_file:
                 self.key = serialization.load_pem_private_key(key_file.read(), None, cryptography_backend())
 
-        self.dir_manager = DIR_MANAGER(self.key,self.cer)
-        self.governance_manager = GOVERNANCE_MANAGER(self.key,self.cer)
+        self.dir_manager = Dir_Manager(self.key,self.cer)
+        self.governance_manager = Governance_Manager(self.key,self.cer)
 
 
     def main(self):

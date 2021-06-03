@@ -1,11 +1,11 @@
-from smt_artifact.managers.common_manager import COMMON_MANAGER
+from smt_artifact.managers.common_manager import Common_Manager
 import lxml
 import sros2.errors
 from sros2.policy import get_transport_default, get_transport_schema
 from xml.dom import minidom
 
 
-class GOVERNANCE_MANAGER(COMMON_MANAGER):
+class Governance_Manager(Common_Manager):
     def __init__(self, key, cer,
                  _KS_ENCLAVES='enclaves',
                  _KS_PUBLIC='public',

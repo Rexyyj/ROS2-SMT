@@ -1,6 +1,6 @@
 from cryptography.hazmat.bindings.openssl.binding import Binding as SSLBinding
 
-class COMMON_MANAGER():
+class Common_Manager():
     def __init__(self, _KS_ENCLAVES='enclaves',
                  _KS_PUBLIC='public',
                  _KS_PRIVATE='private',

@@ -48,10 +48,10 @@ class Topic_Analyzer(Analyzer):
                 self.group_policy["group"+str(group_num)] = self.members_to_policy(members)
                 group_num += 1
 
-        elif mode == "start-middle-end":
-            self.group_policy["start"] = self.members_to_policy(self.find_starting_vertices())
+        elif mode == "src-mid-dst":
+            self.group_policy["source"] = self.members_to_policy(self.find_source_vertices())
             self.group_policy["middle"] = self.members_to_policy(self.find_middleware_vertices())
-            self.group_policy["end"] = self.members_to_policy(self.find_ending_vertices())
+            self.group_policy["destination"] = self.members_to_policy(self.find_destination_vertices())
 
         else:
             raise ValueError()
