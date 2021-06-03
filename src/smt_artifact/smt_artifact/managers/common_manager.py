@@ -31,6 +31,14 @@ class Common_Manager():
 
         return False
     
+    def is_permission_file_exist(self, dir):
+        for item in dir.iterdir():
+            if item.is_file():
+                if item.name == "permission.p7s":
+                    return True
+
+        return False
+
     def sign_bytes(self,cert, key, byte_string):
         # Using two flags here to get the output required:
         #   - PKCS7_DETACHED: Use cleartext signing

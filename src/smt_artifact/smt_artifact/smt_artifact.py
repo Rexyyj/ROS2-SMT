@@ -5,6 +5,7 @@ from cryptography.hazmat.backends import default_backend as cryptography_backend
 from cryptography.hazmat.primitives import serialization
 from smt_artifact.managers.dir_manager import Dir_Manager
 from smt_artifact.managers.governance_manager import Governance_Manager
+from smt_artifact.managers.permission_manager import Permission_Manager
 import time
 _KS_ENCLAVES = 'enclaves'
 _KS_PUBLIC = 'public'
@@ -38,6 +39,7 @@ class SMT_ARTIFACT():
 
         self.dir_manager = Dir_Manager(self.key,self.cer)
         self.governance_manager = Governance_Manager(self.key,self.cer)
+        self.permission_manager = Permission_Manager(self.key,self.cer,self.group_policies)
 
 
     def main(self):
@@ -45,6 +47,7 @@ class SMT_ARTIFACT():
         self.dir_manager.create_group_keystore(self.parent_dir,self.keystores)
         self.governance_manager.create_governances(self.keystores)
         self.dir_manager.create_group_permission_dir(self.parent_dir,self.keystores)
+        self.permission_manager.create_permission(self.keystores)
 
 
 def main():
