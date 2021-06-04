@@ -121,7 +121,7 @@ class Permission_Manager(Common_Manager):
         self.join_node(root,topicsP,"topic","rt/parameter_events")
         self.join_node(root,topicsS,"topic","rt/parameter_events")
         self.join_node(root,topicsP,"topic","rt/rosout")
-        self.join_node(root,topicsS,"topic","rt/clock")
+
 
         for allow_pub in policy["allowPub"]:
             self.join_node(root,topicsP,"topic","rt"+allow_pub)
