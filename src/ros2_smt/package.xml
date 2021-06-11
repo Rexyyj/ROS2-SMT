@@ -6,7 +6,8 @@
   <description>TODO: Package description</description>
   <maintainer email="jiafish@outlook.com">Rex YU</maintainer>
   <license>Apache-2.0 License</license>
-
+  
+  <depend>rclpy</depend>
   <depend>smt_node</depend>
   <depend>smt_relationship</depend>
   <depend>smt_artifact</depend>

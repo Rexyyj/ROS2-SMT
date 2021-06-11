@@ -14,7 +14,7 @@ from ros2cli.node.strategy import add_arguments
 from rclpy.node import HIDDEN_NODE_PREFIX
 
 
-class SMTNodeRelation:
+class SMT_NODE:
 
     def __init__(self, store_path="./"):
         self.store_Path = store_path
@@ -122,11 +122,30 @@ class SMTNodeRelation:
             for data in datas:
                 writer.writerow(data)
 
+    def build_all_edges(self):
+        self.build_edges(self.topicPub, self.topicSub, "topic")
+        self.build_edges(self.serviceSrv, self.serviceCli, "service")
+        self.build_edges(self.actionSrv, self.actionCli, "action")
+
+    def save_all(self):
+        self.csv_writer(self.store_Path+"vertices.csv",
+                        ["id", "name_space", "name", "is_hidden"], self.vertices)
+        print("Saved vertices to: "+self.store_Path+"vertices.csv")
+        self.csv_writer(self.store_Path+"edges.csv",
+                        ["src", "dst", "type", "type_name"], self.edges)
+        print("Saved edges to: "+self.store_Path+"edges.csv")
+
+    def get_vertices(self)->list:
+        return self.vertices
+
+    def get_edges(self)->list:
+        return self.edges
+
 
 def main():
     counter = 0
     parser = argparse.ArgumentParser()
-    smtNodeRelation = SMTNodeRelation()
+    smtNodeRelation = SMT_NODE()
     smtNodeRelation.add_arguments(parser)
     try:
         print("Starting scanning system, use Ctrl+C to stop scanning")
@@ -139,14 +158,9 @@ def main():
     except KeyboardInterrupt:
         pass
     print("Rebuilding system relationship...")
-    smtNodeRelation.build_edges(smtNodeRelation.topicPub, smtNodeRelation.topicSub, "topic")
-    smtNodeRelation.build_edges(smtNodeRelation.serviceSrv, smtNodeRelation.serviceCli, "service")
-    smtNodeRelation.build_edges(smtNodeRelation.actionSrv, smtNodeRelation.actionCli, "action")
+    smtNodeRelation.build_all_edges()
     print("Saving system...")
-    smtNodeRelation.csv_writer(smtNodeRelation.store_Path+"vertices.csv",
-                               ["id", "name_space", "name", "is_hidden"], smtNodeRelation.vertices)
-    smtNodeRelation.csv_writer(smtNodeRelation.store_Path+"edges.csv",
-                               ["src", "dst", "type", "type_name"], smtNodeRelation.edges)
+    smtNodeRelation.save_all()
 
 
 if __name__ == "__main__":

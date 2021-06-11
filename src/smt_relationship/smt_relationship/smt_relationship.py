@@ -28,9 +28,25 @@ class SMT_RELATIONSHIP:
                                               inferSchema=True,
                                               sep=',')
         else:
-            self.vertices = vertices
-            self.edges = edges
+            self.vertices = self.spark.createDataFrame(vertices,["id", "name_space", "name", "is_hidden"])
+            self.edges = self.spark.createDataFrame(edges, ["src", "dst", "type", "type_name"])
             pass
+    #config={"remove_hidden":true,"remove_default":true,"grouping_method":"RBAC","mode":"src-mid-dst"}
+    def analysis(self,config):
+        v = self.vertices
+        e = self.edges.filter("type=='topic'")
+        g = GraphFrame(v, e)
+        topicAnalyzer = Topic_Analyzer(v, e)
+       
+        if config["remove_hidden"]=="True":
+            topicAnalyzer.remove_all_hidden()
+        if config["reomve_default"]=="True":
+            topicAnalyzer.remove_default_edges()
+
+        topicAnalyzer.create_graph()
+        if config["grouping_method"]=="RBAC":
+            topicAnalyzer.RBAC_grouping(mode=config["mode"])
+
 
     def test(self):
         v = self.vertices
