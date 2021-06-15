@@ -135,10 +135,10 @@ class SMT_NODE:
                         ["src", "dst", "type", "type_name"], self.edges)
         print("Saved edges to: "+self.store_Path+"edges.csv")
 
-    def get_vertices(self)->list:
+    def get_vertices(self) -> list:
         return self.vertices
 
-    def get_edges(self)->list:
+    def get_edges(self) -> list:
         return self.edges
 
 
