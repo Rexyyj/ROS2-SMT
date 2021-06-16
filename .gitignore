@@ -3,4 +3,4 @@
 /log/*
 /ckpt/*
 **/__pycache__/**
-/smt_keystore/*
+
