@@ -1,0 +1,152 @@
+MIME-Version: 1.0
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----6550C2711E7A7B25E675371327F1631E"
+
+This is an S/MIME signed message
+
+------6550C2711E7A7B25E675371327F1631E
+Content-Type: text/plain
+
+<?xml version="1.0" ?>
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.omg.org/spec/DDS-SECURITY/20170901/omg_shared_ca_governance.xsd">
+	<permissions>
+		<grant name="end">
+			<subject_name>CN=end</subject_name>
+			<validity>
+				<not_before>2021-06-03T10:34:13</not_before>
+				<not_after>2031-06-03T10:34:13</not_after>
+			</validity>
+			<start_rule>
+				<domains>
+					<id>0</id>
+				</domains>
+				<publish>
+					<topics>
+						<topic>rq/api_client/describe_parametersRequest</topic>
+						<topic>rq/api_client/get_parameter_typesRequest</topic>
+						<topic>rq/api_client/get_parameter_typesRequest</topic>
+						<topic>rq/api_client/list_parametersRequest</topic>
+						<topic>rq/api_client/set_parametersRequest</topic>
+						<topic>rq/api_client/set_parameters_atomicallyRequest</topic>
+						<topic>rr/api_client/describe_parametersReply</topic>
+						<topic>rr/api_client/get_parameter_typesReply</topic>
+						<topic>rr/api_client/get_parametersReply</topic>
+						<topic>rr/api_client/list_parametersReply</topic>
+						<topic>rr/api_client/list_parametersReply</topic>
+						<topic>rr/api_client/set_parameters_atomicallyReply</topic>
+						<topic>rq/toggle_floors/describe_parametersRequest</topic>
+						<topic>rq/toggle_floors/get_parameter_typesRequest</topic>
+						<topic>rq/toggle_floors/get_parameter_typesRequest</topic>
+						<topic>rq/toggle_floors/list_parametersRequest</topic>
+						<topic>rq/toggle_floors/set_parametersRequest</topic>
+						<topic>rq/toggle_floors/set_parameters_atomicallyRequest</topic>
+						<topic>rr/toggle_floors/describe_parametersReply</topic>
+						<topic>rr/toggle_floors/get_parameter_typesReply</topic>
+						<topic>rr/toggle_floors/get_parametersReply</topic>
+						<topic>rr/toggle_floors/list_parametersReply</topic>
+						<topic>rr/toggle_floors/list_parametersReply</topic>
+						<topic>rr/toggle_floors/set_parameters_atomicallyReply</topic>
+						<topic>rq/task_requester/describe_parametersRequest</topic>
+						<topic>rq/task_requester/get_parameter_typesRequest</topic>
+						<topic>rq/task_requester/get_parameter_typesRequest</topic>
+						<topic>rq/task_requester/list_parametersRequest</topic>
+						<topic>rq/task_requester/set_parametersRequest</topic>
+						<topic>rq/task_requester/set_parameters_atomicallyRequest</topic>
+						<topic>rr/task_requester/describe_parametersReply</topic>
+						<topic>rr/task_requester/get_parameter_typesReply</topic>
+						<topic>rr/task_requester/get_parametersReply</topic>
+						<topic>rr/task_requester/list_parametersReply</topic>
+						<topic>rr/task_requester/list_parametersReply</topic>
+						<topic>rr/task_requester/set_parameters_atomicallyReply</topic>
+						<topic>rt/parameter_events</topic>
+						<topic>rt/rosout</topic>
+					</topics>
+				</publish>
+				<subscribe>
+					<topics>
+						<topic>rq/api_client/describe_parametersRequest</topic>
+						<topic>rq/api_client/get_parameter_typesRequest</topic>
+						<topic>rq/api_client/get_parameter_typesRequest</topic>
+						<topic>rq/api_client/list_parametersRequest</topic>
+						<topic>rq/api_client/set_parametersRequest</topic>
+						<topic>rq/api_client/set_parameters_atomicallyRequest</topic>
+						<topic>rr/api_client/describe_parametersReply</topic>
+						<topic>rr/api_client/get_parameter_typesReply</topic>
+						<topic>rr/api_client/get_parametersReply</topic>
+						<topic>rr/api_client/list_parametersReply</topic>
+						<topic>rr/api_client/list_parametersReply</topic>
+						<topic>rr/api_client/set_parameters_atomicallyReply</topic>
+						<topic>rq/toggle_floors/describe_parametersRequest</topic>
+						<topic>rq/toggle_floors/get_parameter_typesRequest</topic>
+						<topic>rq/toggle_floors/get_parameter_typesRequest</topic>
+						<topic>rq/toggle_floors/list_parametersRequest</topic>
+						<topic>rq/toggle_floors/set_parametersRequest</topic>
+						<topic>rq/toggle_floors/set_parameters_atomicallyRequest</topic>
+						<topic>rr/toggle_floors/describe_parametersReply</topic>
+						<topic>rr/toggle_floors/get_parameter_typesReply</topic>
+						<topic>rr/toggle_floors/get_parametersReply</topic>
+						<topic>rr/toggle_floors/list_parametersReply</topic>
+						<topic>rr/toggle_floors/list_parametersReply</topic>
+						<topic>rr/toggle_floors/set_parameters_atomicallyReply</topic>
+						<topic>rq/task_requester/describe_parametersRequest</topic>
+						<topic>rq/task_requester/get_parameter_typesRequest</topic>
+						<topic>rq/task_requester/get_parameter_typesRequest</topic>
+						<topic>rq/task_requester/list_parametersRequest</topic>
+						<topic>rq/task_requester/set_parametersRequest</topic>
+						<topic>rq/task_requester/set_parameters_atomicallyRequest</topic>
+						<topic>rr/task_requester/describe_parametersReply</topic>
+						<topic>rr/task_requester/get_parameter_typesReply</topic>
+						<topic>rr/task_requester/get_parametersReply</topic>
+						<topic>rr/task_requester/list_parametersReply</topic>
+						<topic>rr/task_requester/list_parametersReply</topic>
+						<topic>rr/task_requester/set_parameters_atomicallyReply</topic>
+						<topic>rt/parameter_events</topic>
+						<topic>rt/clock</topic>
+						<topic>rt/clock</topic>
+					</topics>
+				</subscribe>
+			</start_rule>
+			<allow_rule>
+				<domains>
+					<id>0</id>
+				</domains>
+				<publish>
+					<topics>
+						<topic>ros_discovery_info</topic>
+					</topics>
+				</publish>
+				<subscribe>
+					<topics>
+						<topic>ros_discovery_info</topic>
+					</topics>
+				</subscribe>
+			</allow_rule>
+			<default>DENY</default>
+		</grant>
+	</permissions>
+</dds>
+
+------6550C2711E7A7B25E675371327F1631E
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+
+MIIC/QYJKoZIhvcNAQcCoIIC7jCCAuoCAQExDzANBglghkgBZQMEAgEFADALBgkq
+hkiG9w0BBwGgggFCMIIBPjCB5qADAgECAhQSjZfbvUv0y8j0IxLQyfijIo0dqTAK
+BggqhkjOPQQDAjAUMRIwEAYDVQQDDAlyb3Myc210Q0EwHhcNMjEwNjAyMTAzNDEz
+WhcNMzEwNjAxMTAzNDEzWjAUMRIwEAYDVQQDDAlyb3Myc210Q0EwWTATBgcqhkjO
+PQIBBggqhkjOPQMBBwNCAARBBIFpXRtt1qM14rRgbNID20LTgfFB9/8WUeuRlnKz
+bqjD/9tVcNaF8Wf5C3tSbQPyzzPJEEm8TQX6C0Qvswd2oxYwFDASBgNVHRMBAf8E
+CDAGAQH/AgEBMAoGCCqGSM49BAMCA0cAMEQCIAnDbVPD+Tf6No8H4xaJEjGB1cB7
+ir+PyJnTmx3r9gB5AiAScElmpj2quK/sWrz/+0RWgRWOJcHBzjVDWWfaCpPCfTGC
+AX8wggF7AgEBMCwwFDESMBAGA1UEAwwJcm9zMnNtdENBAhQSjZfbvUv0y8j0IxLQ
+yfijIo0dqTANBglghkgBZQMEAgEFAKCB5DAYBgkqhkiG9w0BCQMxCwYJKoZIhvcN
+AQcBMBwGCSqGSIb3DQEJBTEPFw0yMTA2MDMxMDM0MTNaMC8GCSqGSIb3DQEJBDEi
+BCBLmZnIdAUpPJWiaanLiefF7Mq3Sto3iEDHbESvWY+2dTB5BgkqhkiG9w0BCQ8x
+bDBqMAsGCWCGSAFlAwQBKjALBglghkgBZQMEARYwCwYJYIZIAWUDBAECMAoGCCqG
+SIb3DQMHMA4GCCqGSIb3DQMCAgIAgDANBggqhkiG9w0DAgIBQDAHBgUrDgMCBzAN
+BggqhkiG9w0DAgIBKDAKBggqhkjOPQQDAgRGMEQCIFqjuwB9o195JQYR18FJ8l/C
+aO+YaZLXfuUZdCM5BUgvAiBOTS9lG3bzd/WjPubL5Ow9IXbneeFJPzYNb/lVyznj
+AA==
+
+------6550C2711E7A7B25E675371327F1631E--
+

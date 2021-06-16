@@ -1,0 +1,104 @@
+MIME-Version: 1.0
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----F7E5B529C8F3BBC863F382EAA4C879EA"
+
+This is an S/MIME signed message
+
+------F7E5B529C8F3BBC863F382EAA4C879EA
+Content-Type: text/plain
+
+<?xml version="1.0" ?>
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.omg.org/spec/DDS-SECURITY/20170901/omg_shared_ca_governance.xsd">
+	<permissions>
+		<grant name="start">
+			<subject_name>CN=start</subject_name>
+			<validity>
+				<not_before>2021-06-03T10:34:13</not_before>
+				<not_after>2031-06-03T10:34:13</not_after>
+			</validity>
+			<start_rule>
+				<domains>
+					<id>0</id>
+				</domains>
+				<publish>
+					<topics>
+						<topic>rq/building_map_server/describe_parametersRequest</topic>
+						<topic>rq/building_map_server/get_parameter_typesRequest</topic>
+						<topic>rq/building_map_server/get_parameter_typesRequest</topic>
+						<topic>rq/building_map_server/list_parametersRequest</topic>
+						<topic>rq/building_map_server/set_parametersRequest</topic>
+						<topic>rq/building_map_server/set_parameters_atomicallyRequest</topic>
+						<topic>rr/building_map_server/describe_parametersReply</topic>
+						<topic>rr/building_map_server/get_parameter_typesReply</topic>
+						<topic>rr/building_map_server/get_parametersReply</topic>
+						<topic>rr/building_map_server/list_parametersReply</topic>
+						<topic>rr/building_map_server/list_parametersReply</topic>
+						<topic>rr/building_map_server/set_parameters_atomicallyReply</topic>
+						<topic>rt/parameter_events</topic>
+						<topic>rt/rosout</topic>
+						<topic>rt/map</topic>
+					</topics>
+				</publish>
+				<subscribe>
+					<topics>
+						<topic>rq/building_map_server/describe_parametersRequest</topic>
+						<topic>rq/building_map_server/get_parameter_typesRequest</topic>
+						<topic>rq/building_map_server/get_parameter_typesRequest</topic>
+						<topic>rq/building_map_server/list_parametersRequest</topic>
+						<topic>rq/building_map_server/set_parametersRequest</topic>
+						<topic>rq/building_map_server/set_parameters_atomicallyRequest</topic>
+						<topic>rr/building_map_server/describe_parametersReply</topic>
+						<topic>rr/building_map_server/get_parameter_typesReply</topic>
+						<topic>rr/building_map_server/get_parametersReply</topic>
+						<topic>rr/building_map_server/list_parametersReply</topic>
+						<topic>rr/building_map_server/list_parametersReply</topic>
+						<topic>rr/building_map_server/set_parameters_atomicallyReply</topic>
+						<topic>rt/parameter_events</topic>
+						<topic>rt/clock</topic>
+					</topics>
+				</subscribe>
+			</start_rule>
+			<allow_rule>
+				<domains>
+					<id>0</id>
+				</domains>
+				<publish>
+					<topics>
+						<topic>ros_discovery_info</topic>
+					</topics>
+				</publish>
+				<subscribe>
+					<topics>
+						<topic>ros_discovery_info</topic>
+					</topics>
+				</subscribe>
+			</allow_rule>
+			<default>DENY</default>
+		</grant>
+	</permissions>
+</dds>
+
+------F7E5B529C8F3BBC863F382EAA4C879EA
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+
+MIIC/wYJKoZIhvcNAQcCoIIC8DCCAuwCAQExDzANBglghkgBZQMEAgEFADALBgkq
+hkiG9w0BBwGgggFCMIIBPjCB5qADAgECAhQSjZfbvUv0y8j0IxLQyfijIo0dqTAK
+BggqhkjOPQQDAjAUMRIwEAYDVQQDDAlyb3Myc210Q0EwHhcNMjEwNjAyMTAzNDEz
+WhcNMzEwNjAxMTAzNDEzWjAUMRIwEAYDVQQDDAlyb3Myc210Q0EwWTATBgcqhkjO
+PQIBBggqhkjOPQMBBwNCAARBBIFpXRtt1qM14rRgbNID20LTgfFB9/8WUeuRlnKz
+bqjD/9tVcNaF8Wf5C3tSbQPyzzPJEEm8TQX6C0Qvswd2oxYwFDASBgNVHRMBAf8E
+CDAGAQH/AgEBMAoGCCqGSM49BAMCA0cAMEQCIAnDbVPD+Tf6No8H4xaJEjGB1cB7
+ir+PyJnTmx3r9gB5AiAScElmpj2quK/sWrz/+0RWgRWOJcHBzjVDWWfaCpPCfTGC
+AYEwggF9AgEBMCwwFDESMBAGA1UEAwwJcm9zMnNtdENBAhQSjZfbvUv0y8j0IxLQ
+yfijIo0dqTANBglghkgBZQMEAgEFAKCB5DAYBgkqhkiG9w0BCQMxCwYJKoZIhvcN
+AQcBMBwGCSqGSIb3DQEJBTEPFw0yMTA2MDMxMDM0MTNaMC8GCSqGSIb3DQEJBDEi
+BCBcStEc616xmrtVav8MuwgMD3k75q7tuVQwbuex7hjlMzB5BgkqhkiG9w0BCQ8x
+bDBqMAsGCWCGSAFlAwQBKjALBglghkgBZQMEARYwCwYJYIZIAWUDBAECMAoGCCqG
+SIb3DQMHMA4GCCqGSIb3DQMCAgIAgDANBggqhkiG9w0DAgIBQDAHBgUrDgMCBzAN
+BggqhkiG9w0DAgIBKDAKBggqhkjOPQQDAgRIMEYCIQDOO5RYX9rRZ6KodKPo+S/Z
+/wxBESqwaDhPXeARTlr1pQIhAOM8gUb5TmOaSOoOGFqX0uLR4A7Gdm8bsiCVH/PN
+Cljk
+
+------F7E5B529C8F3BBC863F382EAA4C879EA--
+
