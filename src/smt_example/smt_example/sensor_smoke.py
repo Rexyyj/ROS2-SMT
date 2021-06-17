@@ -9,7 +9,7 @@ class Smoke(Node):
 
     def __init__(self):
         super().__init__('smoke',namespace="smt_example/sensor")
-        self.publisher_ = self.create_publisher(String, 'sensor/smoke', 10)
+        self.publisher_ = self.create_publisher(String, 'smoke', 10)
         timer_period = 100  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         seed(1)

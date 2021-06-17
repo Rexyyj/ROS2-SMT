@@ -9,7 +9,7 @@ class Locator(Node):
 
     def __init__(self):
         super().__init__('locator',namespace="smt_example/sensor")
-        self.publisher_ = self.create_publisher(String, 'sensor/locator', 10)
+        self.publisher_ = self.create_publisher(String, 'locator', 10)
         timer_period = 2  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         seed(1)
