@@ -23,7 +23,10 @@ setup(
             'sensor_infrared = smt_example.sensor_infrared:main',
             'sensor_temperature = smt_example.sensor_temperature:main',
             'sensor_locator = smt_example.sensor_locator:main',
-            'sensor_smoke = smt_example.sensor_smoke:main'
+            'sensor_smoke = smt_example.sensor_smoke:main',
+            'actuator_light = smt_example.actuator_light:main',
+            'actuator_alarm = smt_example.actuator_alarm:main',
+            'actuator_door = smt_example.actuator_door:main'
         ],
     },
 )
