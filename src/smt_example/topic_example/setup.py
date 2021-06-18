@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'smt_example'
+package_name = 'topic_example'
 
 setup(
     name=package_name,
@@ -20,13 +20,13 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'sensor_infrared = smt_example.sensor_infrared:main',
-            'sensor_temperature = smt_example.sensor_temperature:main',
-            'sensor_locator = smt_example.sensor_locator:main',
-            'sensor_smoke = smt_example.sensor_smoke:main',
-            'actuator_light = smt_example.actuator_light:main',
-            'actuator_alarm = smt_example.actuator_alarm:main',
-            'actuator_door = smt_example.actuator_door:main'
+            'sensor_infrared = topic_example.sensor_infrared:main',
+            'sensor_temperature = topic_example.sensor_temperature:main',
+            'sensor_locator = topic_example.sensor_locator:main',
+            'sensor_smoke = topic_example.sensor_smoke:main',
+            'actuator_light = topic_example.actuator_light:main',
+            'actuator_alarm = topic_example.actuator_alarm:main',
+            'actuator_door = topic_example.actuator_door:main'
         ],
     },
 )
