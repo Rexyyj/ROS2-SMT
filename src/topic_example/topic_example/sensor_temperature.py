@@ -17,7 +17,7 @@ class Temp(Node):
 
     def timer_callback(self):
         msg = String()
-        val = randint(25,30)
+        val = randint(25,60)
         self._msg["data"]=str(val)
         msg.data = json.dumps(self._msg)
         self.publisher_.publish(msg)

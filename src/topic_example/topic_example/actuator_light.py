@@ -19,9 +19,9 @@ class Light(Node):
     def listener_callback(self, msg):
         info = json.loads(msg.data)
         if info["id"]==self.id:
-            if info["data"]=='0':
+            if info["cmd"]=='0':
                 self.get_logger().info("Light "+info["id"]+" turned off")
-            elif info["data"]=='1':
+            elif info["cmd"]=='1':
                 self.get_logger().info("Light "+info["id"]+" turned on")
 
         

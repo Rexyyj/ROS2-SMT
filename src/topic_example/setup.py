@@ -22,11 +22,12 @@ setup(
         'console_scripts': [
             'sensor_infrared = topic_example.sensor_infrared:main',
             'sensor_temperature = topic_example.sensor_temperature:main',
-            'sensor_locator = topic_example.sensor_locator:main',
             'sensor_smoke = topic_example.sensor_smoke:main',
+            'sensor_locator = topic_example.sensor_locator:main',
             'actuator_light = topic_example.actuator_light:main',
             'actuator_alarm = topic_example.actuator_alarm:main',
-            'actuator_door = topic_example.actuator_door:main'
+            'actuator_door = topic_example.actuator_door:main',
+            'controller = topic_example.controller:main'
         ],
     },
 )
