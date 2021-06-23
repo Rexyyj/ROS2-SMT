@@ -40,12 +40,16 @@ class SMT_RELATIONSHIP:
        
         if config["remove_hidden"]=="True":
             topicAnalyzer.remove_all_hidden()
-        if config["reomve_default"]=="True":
+        if config["remove_default"]=="True":
             topicAnalyzer.remove_default_edges()
 
         topicAnalyzer.create_graph()
         if config["grouping_method"]=="RBAC":
             topicAnalyzer.RBAC_grouping(mode=config["mode"])
+        
+        return topicAnalyzer.get_group_policy()
+
+            
 
 
     def test(self):

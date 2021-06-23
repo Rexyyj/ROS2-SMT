@@ -11,6 +11,7 @@ class SMT_RUN():
         self.smt_node = None
         self.smt_relationship = None
         self.smt_artifact = None
+        self.group_policy = None
 
     def scan_nodes(self):
         counter = 0
@@ -34,6 +35,7 @@ class SMT_RUN():
             pass
         else:
             smtNodeRelation.save_all()
+        self.smt_node=smtNodeRelation
 
 
 def main():
@@ -55,13 +57,13 @@ def main():
                 raise ValueError
             run.smt_relationship = SMT_RELATIONSHIP(from_file=False,
                 vertices=run.smt_node.get_vertices(), edges=run.smt_node.get_edges())
-            config={"remove_hidden":"True","remove_default":"True","grouping_method":"RBAC","mode":"src-mid-dst"}
-            run.smt_relationship.analysis(config)
+            config={"remove_hidden":"True","remove_default":"True","grouping_method":"RBAC","mode":"namespace"}
+            run.group_policy=run.smt_relationship.analysis(config)
             
         elif service == '3':
             if run.smt_relationship==None:
                 raise ValueError
-            run.smt_artifact =  SMT_ARTIFACT(group_policies=run.smt_relationship.get_group_policy())
+            run.smt_artifact =  SMT_ARTIFACT(group_policies=run.group_policy)
             run.smt_artifact.main()
         else:
             pass

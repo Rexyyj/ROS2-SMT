@@ -1,0 +1,109 @@
+MIME-Version: 1.0
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----0028E41FCF5C7E773EA4F47492AC6864"
+
+This is an S/MIME signed message
+
+------0028E41FCF5C7E773EA4F47492AC6864
+Content-Type: text/plain
+
+<?xml version="1.0" ?>
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.omg.org/spec/DDS-SECURITY/20170901/omg_shared_ca_governance.xsd">
+	<permissions>
+		<grant name="group1">
+			<subject_name>CN=group1</subject_name>
+			<validity>
+				<not_before>2021-06-23T16:03:24</not_before>
+				<not_after>2031-06-23T16:03:24</not_after>
+			</validity>
+			<start_rule>
+				<domains>
+					<id>0</id>
+				</domains>
+				<publish>
+					<topics>
+						<topic>rq/smt_example/control/control0/describe_parametersRequest</topic>
+						<topic>rq/smt_example/control/control0/get_parameter_typesRequest</topic>
+						<topic>rq/smt_example/control/control0/get_parameter_typesRequest</topic>
+						<topic>rq/smt_example/control/control0/list_parametersRequest</topic>
+						<topic>rq/smt_example/control/control0/set_parametersRequest</topic>
+						<topic>rq/smt_example/control/control0/set_parameters_atomicallyRequest</topic>
+						<topic>rr/smt_example/control/control0/describe_parametersReply</topic>
+						<topic>rr/smt_example/control/control0/get_parameter_typesReply</topic>
+						<topic>rr/smt_example/control/control0/get_parametersReply</topic>
+						<topic>rr/smt_example/control/control0/list_parametersReply</topic>
+						<topic>rr/smt_example/control/control0/list_parametersReply</topic>
+						<topic>rr/smt_example/control/control0/set_parameters_atomicallyReply</topic>
+						<topic>rt/parameter_events</topic>
+						<topic>rt/rosout</topic>
+						<topic>rt/smt_example/control/light</topic>
+						<topic>rt/smt_example/control/door</topic>
+						<topic>rt/smt_example/control/alarm</topic>
+					</topics>
+				</publish>
+				<subscribe>
+					<topics>
+						<topic>rq/smt_example/control/control0/describe_parametersRequest</topic>
+						<topic>rq/smt_example/control/control0/get_parameter_typesRequest</topic>
+						<topic>rq/smt_example/control/control0/get_parameter_typesRequest</topic>
+						<topic>rq/smt_example/control/control0/list_parametersRequest</topic>
+						<topic>rq/smt_example/control/control0/set_parametersRequest</topic>
+						<topic>rq/smt_example/control/control0/set_parameters_atomicallyRequest</topic>
+						<topic>rr/smt_example/control/control0/describe_parametersReply</topic>
+						<topic>rr/smt_example/control/control0/get_parameter_typesReply</topic>
+						<topic>rr/smt_example/control/control0/get_parametersReply</topic>
+						<topic>rr/smt_example/control/control0/list_parametersReply</topic>
+						<topic>rr/smt_example/control/control0/list_parametersReply</topic>
+						<topic>rr/smt_example/control/control0/set_parameters_atomicallyReply</topic>
+						<topic>rt/parameter_events</topic>
+						<topic>rt/smt_example/sensor/temperature</topic>
+						<topic>rt/smt_example/sensor/smoke</topic>
+						<topic>rt/smt_example/sensor/infrared</topic>
+						<topic>rt/smt_example/sensor/locator</topic>
+					</topics>
+				</subscribe>
+			</start_rule>
+			<allow_rule>
+				<domains>
+					<id>0</id>
+				</domains>
+				<publish>
+					<topics>
+						<topic>ros_discovery_info</topic>
+					</topics>
+				</publish>
+				<subscribe>
+					<topics>
+						<topic>ros_discovery_info</topic>
+					</topics>
+				</subscribe>
+			</allow_rule>
+			<default>DENY</default>
+		</grant>
+	</permissions>
+</dds>
+
+------0028E41FCF5C7E773EA4F47492AC6864
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+
+MIIC/gYJKoZIhvcNAQcCoIIC7zCCAusCAQExDzANBglghkgBZQMEAgEFADALBgkq
+hkiG9w0BBwGgggFDMIIBPzCB5qADAgECAhRfqhpROhjhCTR0RqlOO3hw7moGQzAK
+BggqhkjOPQQDAjAUMRIwEAYDVQQDDAlyb3Myc210Q0EwHhcNMjEwNjIyMTYwMzI0
+WhcNMzEwNjIxMTYwMzI0WjAUMRIwEAYDVQQDDAlyb3Myc210Q0EwWTATBgcqhkjO
+PQIBBggqhkjOPQMBBwNCAAQZvTD1CRGTnPSdqfM0ecYfdyI8tyhIejxyXsOcoKTh
+AoCnFTaCGZm8MWJtA5ZBjjXfNFVe8AHfsqVTD7RU4f4OoxYwFDASBgNVHRMBAf8E
+CDAGAQH/AgEBMAoGCCqGSM49BAMCA0gAMEUCIDun7cCaotG/9iWoMQbqNhu4zZpV
+yhI6+rxDpErSp+NzAiEAoMiTkdaJV4V1VS42SmLR9EHhKdj/L+QeB03kOoPatYAx
+ggF/MIIBewIBATAsMBQxEjAQBgNVBAMMCXJvczJzbXRDQQIUX6oaUToY4Qk0dEap
+Tjt4cO5qBkMwDQYJYIZIAWUDBAIBBQCggeQwGAYJKoZIhvcNAQkDMQsGCSqGSIb3
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjEwNjIzMTYwMzI0WjAvBgkqhkiG9w0BCQQx
+IgQgSNNAE7p3S+JzSW/m0Xo3Wb+pSatjzVSv/mDHt76NlJAweQYJKoZIhvcNAQkP
+MWwwajALBglghkgBZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFlAwQBAjAKBggq
+hkiG9w0DBzAOBggqhkiG9w0DAgICAIAwDQYIKoZIhvcNAwICAUAwBwYFKw4DAgcw
+DQYIKoZIhvcNAwICASgwCgYIKoZIzj0EAwIERjBEAiBa2IK13++b2qoiy7mbhWQU
+i1a/YqpOfef/TNQ7sFKSBAIgbzJIACwkeA6vUFxOq1RKvehISBcSZETRTNQbZCFm
+sZw=
+
+------0028E41FCF5C7E773EA4F47492AC6864--
+
