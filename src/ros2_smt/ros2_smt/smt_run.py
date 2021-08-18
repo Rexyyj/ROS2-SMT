@@ -44,7 +44,7 @@ def main():
     print("\t2: Analysis ROS2 node relationship with pyspark")
     print("\t3: Create ROS2 security artifacts")
     print("Note: You can enter '123' to use a serials of service")
-    print("Selection: ", end='')
+    print("Selection(default 123): ", end='')
     services = input()
     run = SMT_RUN()
     for service in list(services):
