@@ -35,10 +35,9 @@ class Dir_Manager(Common_Manager):
             self.create_single_keystore(parent_dir.joinpath(dir))
     # Todo: Modify the checking procedure
     def create_group_permission_dir(self, parent_dir,keystores, groups):
-        dir_to_create = set(groups)
         for keystore in keystores:
-            for dir in dir_to_create:
-                self.create_permission_dir(parent_dir.joinpath(keystore).joinpath(self._KS_ENCLAVES).joinpath(dir))
+            for group in set(groups):
+                self.create_permission_dir(parent_dir.joinpath(keystore),group)
 
     def rm_tree(self, pth):
         for child in pth.glob('*'):
@@ -85,8 +84,8 @@ class Dir_Manager(Common_Manager):
         for path in (keystore_permissions_ca_key_path, keystore_identity_ca_key_path):
             _utilities.create_symlink(src=Path('ca.key.pem'), dst=path)
 
-    def create_permission_dir(self,keystore_path):
-        permission_dir = keystore_path.joinpath(self._KS_ENCLAVES,keystore_path.name)
+    def create_permission_dir(self,keystore_path,group):
+        permission_dir = keystore_path.joinpath(self._KS_ENCLAVES,group)
         permission_dir.mkdir(parents=True, exist_ok=True)
         _utilities.create_symlink(src=Path("../governance.p7s"),dst=permission_dir.joinpath("governance.p7s"))
         _utilities.create_symlink(src=Path("../../public/identity_ca.cert.pem"),dst=permission_dir.joinpath("identity_ca.cert.pem"))
