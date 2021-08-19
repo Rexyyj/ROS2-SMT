@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+#####################################
+# @author [Rex Yu]
+# @email  [jiafish@outlook.com]
+# @github https://github.com/Rexyyj
+# @date   2021-08-19 08:47:42
+# @desc 
+####################################
+
 from smt_artifact.managers.common_manager import Common_Manager
 from datetime import datetime
 from xml.dom import minidom

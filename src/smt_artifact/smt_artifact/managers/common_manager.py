@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+#####################################
+# @author [Rex Yu]
+# @email  [jiafish@outlook.com]
+# @github https://github.com/Rexyyj
+# @date   2021-08-19 08:47:12
+# @desc 
+####################################
 from cryptography.hazmat.bindings.openssl.binding import Binding as SSLBinding
 
 class Common_Manager():

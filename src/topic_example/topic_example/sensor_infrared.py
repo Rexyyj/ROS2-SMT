@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+#####################################
+# @author [Rex Yu]
+# @email  [jiafish@outlook.com]
+# @github https://github.com/Rexyyj
+# @date   2021-08-19 08:50:26
+# @desc 
+####################################
+
 import rclpy
 from rclpy.node import Node
 

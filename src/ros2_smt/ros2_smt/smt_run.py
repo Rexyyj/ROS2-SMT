@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+#####################################
+# @author [Rex Yu]
+# @email  [jiafish@outlook.com]
+# @github https://github.com/Rexyyj
+# @date   2021-08-19 08:46:49
+# @desc 
+####################################
 from smt_node.smt_node import SMT_NODE
 from smt_relationship.smt_relationship import SMT_RELATIONSHIP
 from smt_artifact.smt_artifact import SMT_ARTIFACT
