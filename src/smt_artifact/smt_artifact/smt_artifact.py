@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+#####################################
+# @author [Rex Yu]
+# @email  [jiafish@outlook.com]
+# @github https://github.com/Rexyyj
+# @date   2021-08-19 08:46:18
+# @desc 
+####################################
 from pathlib import Path
 from sros2 import _utilities
 from cryptography import x509
