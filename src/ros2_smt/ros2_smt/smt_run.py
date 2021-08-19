@@ -53,10 +53,11 @@ def main():
             run.scan_nodes()
 
         elif service == '2':
-            if run.smt_node == None:
-                raise ValueError
-            run.smt_relationship = SMT_RELATIONSHIP(from_file=False,
-                vertices=run.smt_node.get_vertices(), edges=run.smt_node.get_edges())
+            if run.smt_node is not None:
+                run.smt_relationship = SMT_RELATIONSHIP(from_file=False,
+                    vertices=run.smt_node.get_vertices(), edges=run.smt_node.get_edges())
+            else:
+                run.smt_relationship=SMT_RELATIONSHIP(from_file=True)
             config={"remove_hidden":"True","remove_default":"True","grouping_method":"RBAC","mode":"namespace"}
             run.group_policy=run.smt_relationship.analysis(config)
             

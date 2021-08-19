@@ -34,21 +34,11 @@ class Dir_Manager(Common_Manager):
         for dir in dir_to_create:
             self.create_single_keystore(parent_dir.joinpath(dir))
     # Todo: Modify the checking procedure
-    def create_group_permission_dir(self, parent_dir, keystores):
-        exist_group_keystore = set()
-        
-        # for addr in parent_dir.iterdir():
-        #     if addr.is_dir():
-        #         if addr in keystores:
-        #             if self.check_keystore_integrality(addr):
-        #                 exist_group_keystore.add(addr)
-        #             else:
-        #                 self.rm_tree(addr)
-        #         else:
-        #             self.rm_tree(addr)
-        dir_to_create = set(keystores)
-        for dir in dir_to_create:
-            self.create_permission_dir(parent_dir.joinpath(dir))
+    def create_group_permission_dir(self, parent_dir,keystores, groups):
+        dir_to_create = set(groups)
+        for keystore in keystores:
+            for dir in dir_to_create:
+                self.create_permission_dir(parent_dir.joinpath(keystore).joinpath(self._KS_ENCLAVES).joinpath(dir))
 
     def rm_tree(self, pth):
         for child in pth.glob('*'):

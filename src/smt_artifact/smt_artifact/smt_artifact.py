@@ -14,7 +14,7 @@ _DEFAULT_COMMON_NAME = 'ros2smtCA'
 
 
 class SMT_ARTIFACT():
-    def __init__(self, group_policies, parent_dir='./smt_keystore', use_keycer_in_keystore=None):
+    def __init__(self, group_policies, parent_dir='./smt_keystore', use_keycer_in_keystore=None,keystore_mode = "single"):
         self.group_policies = group_policies
         if group_policies == []:
             raise ValueError
@@ -22,8 +22,15 @@ class SMT_ARTIFACT():
         self.parent_dir = Path.cwd().joinpath(parent_dir)
         self.parent_dir.mkdir(parents=True, exist_ok=True)
         self.keystores = []
-        for key in self.group_policies.keys():
-            self.keystores.append(self.parent_dir.joinpath("./"+key))
+        self.store2group ={}
+        if keystore_mode == "single":
+            self.keystores.append("keystore")
+            self.store2group["keystore"]= list(set(self.group_policies.keys()))
+        else:
+            # ToDo add other keystore implementation
+            raise Exception("Keystore mode not yet implemented!!")
+        # for key in self.group_policies.keys():
+        #     self.keystores.append(self.parent_dir.joinpath("./"+key))
 
         if use_keycer_in_keystore == None:
             self.cer, self.key = _utilities.build_key_and_cert(
@@ -45,9 +52,9 @@ class SMT_ARTIFACT():
     def main(self):
         print('Hi from smt_artifact.')
         self.dir_manager.create_group_keystore(self.parent_dir,self.keystores)
-        self.governance_manager.create_governances(self.keystores)
-        self.dir_manager.create_group_permission_dir(self.parent_dir,self.keystores)
-        self.permission_manager.create_permission(self.keystores)
+        self.governance_manager.create_governances(self.parent_dir,self.keystores)
+        self.dir_manager.create_group_permission_dir(self.parent_dir,self.keystores,self.group_policies.keys())
+        self.permission_manager.create_permission(self.parent_dir,self.keystores,self.store2group)
 
 
 def main():

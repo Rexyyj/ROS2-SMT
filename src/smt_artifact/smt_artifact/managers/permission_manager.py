@@ -34,12 +34,13 @@ class Permission_Manager(Common_Manager):
         self.cer = cer
         self.policies = policies
 
-    def create_permission(self, keystores):
+    def create_permission(self, parent_dir,keystores,store2group):
         for keystore in keystores:
-            permission_path = keystore.joinpath(self._KS_ENCLAVES, keystore.name)
-            if not self.is_permission_file_exist(permission_path):
-                self.create_single_permission(permission_path.joinpath(
-                    "./permission.p7s"), permission_path.name)
+            for group in store2group[keystore]:
+                permission_path = parent_dir.joinpath(keystore).joinpath(self._KS_ENCLAVES).joinpath(group)
+                if not self.is_permission_file_exist(permission_path):
+                    self.create_single_permission(permission_path.joinpath(
+                        "./permission.p7s"), group)
 
     def get_valid_time(self):
         now = datetime.now()
