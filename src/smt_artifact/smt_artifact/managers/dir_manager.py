@@ -108,7 +108,7 @@ class Dir_Manager(Common_Manager):
 
         cert, private_key = _utilities.build_key_and_cert(
             x509.Name([x509.NameAttribute(x509.oid.NameOID.COMMON_NAME,  u'cryptography.io')]),
-            issuer_name=self.cer,
+            issuer_name=self.cer.subject,
             ca_key=self.key)
 
         _utilities.write_key(private_key, key_path)
