@@ -10,7 +10,9 @@
 from sros2 import _utilities
 from pathlib import Path
 from smt_artifact.managers.common_manager import Common_Manager
-
+from cryptography import x509
+from cryptography.hazmat.backends import default_backend as cryptography_backend
+from cryptography.hazmat.primitives import serialization
 
 class Dir_Manager(Common_Manager):
     def __init__(self, key, cer,
@@ -100,4 +102,15 @@ class Dir_Manager(Common_Manager):
         _utilities.create_symlink(src=Path("../../public/identity_ca.cert.pem"),dst=permission_dir.joinpath("identity_ca.cert.pem"))
         _utilities.create_symlink(src=Path("../../public/permissions_ca.cert.pem"),dst=permission_dir.joinpath("permissions_ca.cert.pem"))
 
+        # create cert.pem and key.pem
+        cert_path = permission_dir.joinpath('cert.pem')
+        key_path = permission_dir.joinpath('key.pem')
+
+        cert, private_key = _utilities.build_key_and_cert(
+            x509.Name([x509.NameAttribute(x509.oid.NameOID.COMMON_NAME, "")]),
+            issuer_name=self.cer,
+            ca_key=self.key)
+
+        _utilities.write_key(private_key, key_path)
+        _utilities.write_cert(cert, cert_path)
 
