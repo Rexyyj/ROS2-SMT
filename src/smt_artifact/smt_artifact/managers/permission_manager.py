@@ -87,7 +87,7 @@ class Permission_Manager(Common_Manager):
 
         self.join_node(root, grant, "subject_name", "CN="+group_name)
         validity = self.join_layer(root, grant, "validity")
-        allow_rule1 = self.join_layer(root, grant, "start_rule")
+        #allow_rule1 = self.join_layer(root, grant, "start_rule")
         allow_rule2 = self.join_layer(root, grant, "allow_rule")
         self.join_node(root, grant, "default", "DENY")
 
@@ -107,7 +107,7 @@ class Permission_Manager(Common_Manager):
         topicsS = self.join_layer(root, subscribe, "topics")
         self.join_node(root, topicsS, "topic", "ros_discovery_info")
 
-        return allow_rule1
+        return allow_rule2
 
     def add_permission_policy(self, root, parent, group_name):
         policy = self.policies[group_name]
