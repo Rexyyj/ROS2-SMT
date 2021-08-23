@@ -49,7 +49,7 @@ class Permission_Manager(Common_Manager):
                 permission_path = parent_dir.joinpath(keystore).joinpath(self._KS_ENCLAVES).joinpath(group)
                 if not self.is_permission_file_exist(permission_path):
                     self.create_single_permission(permission_path.joinpath(
-                        "./permission.p7s"), group)
+                        "./permissions.p7s"), group)
 
     def get_valid_time(self):
         now = datetime.now()
@@ -143,6 +143,6 @@ class Permission_Manager(Common_Manager):
         permission_parent = self.create_basic_structure(root, group_name)
         self.add_permission_policy(root, permission_parent, group_name)
         
-        xml_str = root.toprettyxml(indent="\t")
+        xml_str = root.toprettyxml(indent="  ")
         with open(path, 'wb') as f:
             f.write(self.sign_bytes(self.cer, self.key, str.encode(xml_str)))
