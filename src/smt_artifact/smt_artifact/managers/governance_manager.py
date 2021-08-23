@@ -30,7 +30,7 @@ class Governance_Manager(Common_Manager):
 
     def create_governances(self, parent_dir,keystores):
         for keystore in keystores:
-            enclaves_path = parent_dir.joinpath(keystore.joinpath+self._KS_ENCLAVES)
+            enclaves_path = parent_dir.joinpath(keystore).joinpath(self._KS_ENCLAVES)
             if not self.is_governance_file_exist(enclaves_path):
                 self.create_single_governance(enclaves_path.joinpath("./governance.p7s"))
 
