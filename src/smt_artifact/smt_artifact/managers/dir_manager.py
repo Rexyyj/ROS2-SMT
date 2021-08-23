@@ -19,7 +19,7 @@ class Dir_Manager(Common_Manager):
                  _KS_ENCLAVES='enclaves',
                  _KS_PUBLIC='public',
                  _KS_PRIVATE='private',
-                 _DEFAULT_COMMON_NAME='ros2smtCA',
+                 _DEFAULT_COMMON_NAME='/C=NL/ST=OV/L=Locality Name/OU=Example OU/O=Example ID CA Organization/CN=Example ID CA/emailAddress=authority@cycloneddssecurity.adlinktech.com',
                  ) -> None:
         self._KS_ENCLAVES = _KS_ENCLAVES
         self._KS_PUBLIC = _KS_PUBLIC
@@ -107,7 +107,7 @@ class Dir_Manager(Common_Manager):
         key_path = permission_dir.joinpath('key.pem')
 
         cert, private_key = _utilities.build_key_and_cert(
-            x509.Name([x509.NameAttribute(x509.oid.NameOID.COMMON_NAME,  self._DEFAULT_COMMON_NAME)]),
+            x509.Name([x509.NameAttribute(x509.oid.NameOID.COMMON_NAME,  u'cryptography.io')]),
             issuer_name=self.cer.subject,
             ca_key=self.key)
 

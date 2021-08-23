@@ -18,7 +18,7 @@ import time
 _KS_ENCLAVES = 'enclaves'
 _KS_PUBLIC = 'public'
 _KS_PRIVATE = 'private'
-_DEFAULT_COMMON_NAME = 'ros2smtCA'
+_DEFAULT_COMMON_NAME = '/C=NL/ST=OV/L=Locality Name/OU=Example OU/O=Example ID CA Organization/CN=Example ID CA/emailAddress=authority@cycloneddssecurity.adlinktech.com'
 
 
 class SMT_ARTIFACT():
