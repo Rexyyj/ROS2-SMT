@@ -33,7 +33,7 @@ class Permission_Manager(Common_Manager):
                  _KS_ENCLAVES='enclaves',
                  _KS_PUBLIC='public',
                  _KS_PRIVATE='private',
-                 _DEFAULT_COMMON_NAME='ros2smtCA',
+                 _DEFAULT_COMMON_NAME='/C=NL/ST=OV/L=Locality Name/OU=Example OU/O=Example ID CA Organization/CN=Example ID CA/emailAddress=authority@cycloneddssecurity.adlinktech.com',
                  ) -> None:
         self._KS_ENCLAVES = _KS_ENCLAVES
         self._KS_PUBLIC = _KS_PUBLIC

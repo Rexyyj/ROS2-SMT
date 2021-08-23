@@ -12,7 +12,7 @@ class Common_Manager():
     def __init__(self, _KS_ENCLAVES='enclaves',
                  _KS_PUBLIC='public',
                  _KS_PRIVATE='private',
-                 _DEFAULT_COMMON_NAME='ros2smtCA') -> None:
+                 _DEFAULT_COMMON_NAME='/C=NL/ST=OV/L=Locality Name/OU=Example OU/O=Example ID CA Organization/CN=Example ID CA/emailAddress=authority@cycloneddssecurity.adlinktech.com') -> None:
         self._KS_ENCLAVES = _KS_ENCLAVES
         self._KS_PUBLIC = _KS_PUBLIC
         self._KS_PRIVATE = _KS_PRIVATE
