@@ -107,7 +107,7 @@ class Dir_Manager(Common_Manager):
         key_path = permission_dir.joinpath('key.pem')
 
         cert, private_key = _utilities.build_key_and_cert(
-            x509.Name([x509.NameAttribute(x509.oid.NameOID.COMMON_NAME, "")]),
+            x509.Name([x509.NameAttribute(x509.oid.NameOID.COMMON_NAME,  u'cryptography.io')]),
             issuer_name=self.cer,
             ca_key=self.key)
 
