@@ -10,6 +10,7 @@
 from smt_artifact.managers.common_manager import Common_Manager
 from datetime import datetime
 from xml.dom import minidom
+from sros2 import _utilities
 _DEFAULT_POLICY_RQ = ["/describe_parametersRequest",
                       "/get_parameter_typesRequest",
                       "/get_parameter_typesRequest",
@@ -49,7 +50,7 @@ class Permission_Manager(Common_Manager):
                 permission_path = parent_dir.joinpath(keystore).joinpath(self._KS_ENCLAVES).joinpath(group)
                 if not self.is_permission_file_exist(permission_path):
                     self.create_single_permission(permission_path.joinpath(
-                        "./permissions.p7s"), group)
+                        "./permissions.xml"), group,permission_path)
 
     def get_valid_time(self):
         now = datetime.now()
@@ -138,11 +139,19 @@ class Permission_Manager(Common_Manager):
         for allow_sub in policy["allowSub"]:
             self.join_node(root,topicsS,"topic","rt"+allow_sub)
 
-    def create_single_permission(self, path, group_name):
+    def create_single_permission(self, path, group_name,permission_path):
         root = minidom.Document()
         permission_parent = self.create_basic_structure(root, group_name)
         self.add_permission_policy(root, permission_parent, group_name)
         
         xml_str = root.toprettyxml(indent="  ")
         with open(path, 'wb') as f:
-            f.write(self.sign_bytes(self.cer, self.key, str.encode(xml_str)))
+            f.write(xml_str)
+            # f.write(self.sign_bytes(self.cer, self.key, str.encode(xml_str)))
+
+        _utilities.create_smime_signed_file(
+            permission_path.joinpath("./../../public/permissions_ca.cert.pem"),
+            permission_path.joinpath("./../../private/permissions_ca.key.pem"),
+            path,
+            permission_path.joinpath("./permissions.p7s")
+        )
