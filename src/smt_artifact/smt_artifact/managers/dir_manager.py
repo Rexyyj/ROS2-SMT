@@ -19,7 +19,7 @@ class Dir_Manager(Common_Manager):
                  _KS_ENCLAVES='enclaves',
                  _KS_PUBLIC='public',
                  _KS_PRIVATE='private',
-                 _DEFAULT_COMMON_NAME='/C=NL/ST=OV/L=Locality Name/OU=Example OU/O=Example ID CA Organization/CN=Example ID CA/emailAddress=authority@cycloneddssecurity.adlinktech.com',
+                 _DEFAULT_COMMON_NAME='ros2smt',
                  ) -> None:
         self._KS_ENCLAVES = _KS_ENCLAVES
         self._KS_PUBLIC = _KS_PUBLIC
@@ -46,9 +46,11 @@ class Dir_Manager(Common_Manager):
             self.create_single_keystore(parent_dir.joinpath(dir))
     # Todo: Modify the checking procedure
     def create_group_permission_dir(self, parent_dir,keystores, groups):
+        group_cert_key = {}
         for keystore in keystores:
             for group in set(groups):
-                self.create_permission_dir(parent_dir.joinpath(keystore),group)
+                temp = self.create_permission_dir(parent_dir.joinpath(keystore),group)
+                group_cert_key[group]=temp
 
     def rm_tree(self, pth):
         for child in pth.glob('*'):
@@ -113,4 +115,6 @@ class Dir_Manager(Common_Manager):
 
         _utilities.write_key(private_key, key_path)
         _utilities.write_cert(cert, cert_path)
+
+
 

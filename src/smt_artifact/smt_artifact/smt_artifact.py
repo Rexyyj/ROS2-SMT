@@ -18,7 +18,7 @@ import time
 _KS_ENCLAVES = 'enclaves'
 _KS_PUBLIC = 'public'
 _KS_PRIVATE = 'private'
-_DEFAULT_COMMON_NAME = '/C=NL/ST=OV/L=Locality Name/OU=Example OU/O=Example ID CA Organization/CN=Example ID CA/emailAddress=authority@cycloneddssecurity.adlinktech.com'
+_DEFAULT_COMMON_NAME = 'ros2smt'
 
 
 class SMT_ARTIFACT():
@@ -58,7 +58,7 @@ class SMT_ARTIFACT():
 
 
     def main(self):
-        print('Hi from smt_artifact.')
+        # print('Hi from smt_artifact.')
         self.dir_manager.create_group_keystore(self.parent_dir,self.keystores)
         self.governance_manager.create_governances(self.parent_dir,self.keystores)
         self.dir_manager.create_group_permission_dir(self.parent_dir,self.keystores,self.group_policies.keys())
