@@ -1,0 +1,4 @@
+source /ros_entrypoint.sh
+export ROS_SECURITY_KEYSTORE=/smt_keystore/keystore
+export ROS_SECURITY_ENABLE=true
+export ROS_SECURITY_STRATEGY=Enforce
