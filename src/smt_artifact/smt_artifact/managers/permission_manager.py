@@ -145,7 +145,7 @@ class Permission_Manager(Common_Manager):
         self.add_permission_policy(root, permission_parent, group_name)
         
         xml_str = root.toprettyxml(indent="  ")
-        with open(path, 'wb') as f:
+        with open(path, 'w') as f:
             f.write(xml_str)
             # f.write(self.sign_bytes(self.cer, self.key, str.encode(xml_str)))
 
