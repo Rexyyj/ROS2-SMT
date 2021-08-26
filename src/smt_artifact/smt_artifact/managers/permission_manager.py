@@ -13,7 +13,7 @@ from xml.dom import minidom
 from sros2 import _utilities
 _DEFAULT_POLICY_RQ = ["/describe_parametersRequest",
                       "/get_parameter_typesRequest",
-                      "/get_parameter_typesRequest",
+                      "/get_parametersRequest",
                       "/list_parametersRequest",
                       "/set_parametersRequest",
                       "/set_parameters_atomicallyRequest"
