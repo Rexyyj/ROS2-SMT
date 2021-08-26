@@ -80,13 +80,13 @@ class Permission_Manager(Common_Manager):
     def create_basic_structure(self, root, group_name):
 
         dds = self.join_layer(root, None, "dds", ["xmlns:xsi", "xsi:noNamespaceSchemaLocation"], [
-                              "http://www.w3.org/2001/XMLSchema-instance", "http://www.omg.org/spec/DDS-SECURITY/20170901/omg_shared_ca_governance.xsd"])
+                              "http://www.w3.org/2001/XMLSchema-instance", "http://www.omg.org/spec/DDS-SECURITY/20170901/omg_shared_ca_permissions.xsd"])
 
         permissions = self.join_layer(root, dds, "permissions")
 
         grant = self.join_layer(root, permissions, "grant", ["name"], [group_name])
 
-        self.join_node(root, grant, "subject_name", "CN="+group_name)
+        self.join_node(root, grant, "subject_name", "CN=/"+group_name)
         validity = self.join_layer(root, grant, "validity")
         #allow_rule1 = self.join_layer(root, grant, "start_rule")
         allow_rule2 = self.join_layer(root, grant, "allow_rule")
