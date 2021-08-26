@@ -77,6 +77,8 @@ def main():
                 raise ValueError
             run.smt_artifact =  SMT_ARTIFACT(group_policies=run.group_policy)
             run.smt_artifact.main()
+
+            
         else:
             pass
 
