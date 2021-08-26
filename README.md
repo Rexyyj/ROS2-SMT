@@ -10,10 +10,8 @@ ROS2 Security Management Tool (ROS2-SMT) aims at making easier the configuration
    Then, you can run container according to the network configuration of the existing ROS2 system and run ROS2-SMT.
    ```bash
    # When ROS2 system to be scan is under host PC's network and map /smt_keystore in docker container to host's ~/smt_keystore(or other directory you prefer)
-    $ docker run -it --network host -v ~/smt_keystore:/smt_keystore rexyyj/ros2-smt:latest
-    $ source /ros_entrypoint.sh && cd ROS2-SMT
-    $ colcon build
-    $ source install/local_setup.bash
+    $ docker run -it --network host -v ~/smt_keystore:/smt_keystore rexyyj/ros2-smt:0.1.1
+    $ source env.sh
     $ ros2 run ros2_smt smt_run
 
     # To be simplify!
