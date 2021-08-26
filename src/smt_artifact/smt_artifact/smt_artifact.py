@@ -66,7 +66,8 @@ class SMT_ARTIFACT():
         self.output_node2pol_map()
 
     def output_node2pol_map(self):
-        with open(self.parent_dir+"/node2enclave.txt","w") as f:
+        dir  = self.parent_dir.joinpath("./node2enclave.txt")
+        with open(dir,"w") as f:
             f.write("Node  ---->  Enclave")
             for key in self.group_policies.keys():
                 for node in self.group_policies[key]["members"]:
