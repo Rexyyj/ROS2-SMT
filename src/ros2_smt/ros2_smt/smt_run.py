@@ -68,7 +68,10 @@ def main():
                 run.smt_relationship = SMT_RELATIONSHIP(from_file=False,
                     vertices=run.smt_node.get_vertices(), edges=run.smt_node.get_edges())
             else:
-                run.smt_relationship=SMT_RELATIONSHIP(from_file=True)
+                path = input("Please enter input file's parent directory(./ as default): ")
+                if path == "":
+                    path ="./"
+                run.smt_relationship=SMT_RELATIONSHIP(from_file=True,filePath=path)
             config={"remove_hidden":"True","remove_default":"True","grouping_method":"RBAC","mode":"namespace"}
             run.group_policy=run.smt_relationship.analysis(config)
             
@@ -78,7 +81,7 @@ def main():
             run.smt_artifact =  SMT_ARTIFACT(group_policies=run.group_policy)
             run.smt_artifact.main()
 
-            
+
         else:
             pass
 

@@ -17,7 +17,7 @@ import sys
 
 class SMT_RELATIONSHIP:
 
-    def __init__(self, from_file=True, ckpt_dir="./ckpt", vertices=[], edges=[]):
+    def __init__(self, from_file=True, ckpt_dir="./ckpt", vertices=[], edges=[],filePath = "./"):
         conf = SparkConf().setAppName("Analyzer")
         conf.set("spark.jars.packages", "graphframes:graphframes:0.8.1-spark3.0-s_2.12")
         conf.set("spark.jars.repositories", "https://repos.spark-packages.org/")
@@ -26,12 +26,12 @@ class SMT_RELATIONSHIP:
         self.spark = SparkSession.builder.getOrCreate()
 
         if from_file == True:
-            self.vertices = self.spark.read.load("./vertices.csv",
+            self.vertices = self.spark.read.load(filePath+"vertices.csv",
                                                  format="csv",
                                                  header=True,
                                                  inferSchema=True,
                                                  sep=',')
-            self.edges = self.spark.read.load("./edges.csv",
+            self.edges = self.spark.read.load(filePath+"edges.csv",
                                               format="csv",
                                               header=True,
                                               inferSchema=True,
