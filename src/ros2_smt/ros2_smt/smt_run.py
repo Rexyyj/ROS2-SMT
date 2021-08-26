@@ -54,6 +54,9 @@ def main():
     print("Note: You can enter '123' to use a serials of service")
     print("Selection(default 123): ", end='')
     services = input()
+    if services == "":
+        services="123"
+
     run = SMT_RUN()
     for service in list(services):
         if service == '1':
