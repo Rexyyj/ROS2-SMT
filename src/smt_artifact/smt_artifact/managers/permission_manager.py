@@ -84,7 +84,7 @@ class Permission_Manager(Common_Manager):
 
         permissions = self.join_layer(root, dds, "permissions")
 
-        grant = self.join_layer(root, permissions, "grant", ["name"], [group_name])
+        grant = self.join_layer(root, permissions, "grant", ["name"], ['/'+group_name])
 
         self.join_node(root, grant, "subject_name", "CN=/"+group_name)
         validity = self.join_layer(root, grant, "validity")
