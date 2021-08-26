@@ -63,6 +63,7 @@ class SMT_ARTIFACT():
         self.governance_manager.create_governances(self.parent_dir,self.keystores)
         self.dir_manager.create_group_permission_dir(self.parent_dir,self.keystores,self.group_policies.keys())
         self.permission_manager.create_permission(self.parent_dir,self.keystores,self.store2group)
+        self.output_node2pol_map()
 
     def output_node2pol_map(self):
         with open(self.parent_dir+"/node2enclave.txt","w") as f:
@@ -79,7 +80,6 @@ def main():
               'end': {'members': ['/api_client', '/toggle_floors', '/task_requester'], 'allowPub': [], 'allowSub': ['/clock']}}
     smt_artifact = SMT_ARTIFACT(group_policies=policy)
     smt_artifact.main()
-    smt_artifact.output_node2pol_map()
 
 
 if __name__ == '__main__':
