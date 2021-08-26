@@ -23,7 +23,7 @@ _DEFAULT_POLICY_RR = ["/describe_parametersReply",
                       "/get_parameter_typesReply",
                       "/get_parametersReply",
                       "/list_parametersReply",
-                      "/list_parametersReply",
+                      "/set_parametersReply",
                       "/set_parameters_atomicallyReply"
                       ]
 
