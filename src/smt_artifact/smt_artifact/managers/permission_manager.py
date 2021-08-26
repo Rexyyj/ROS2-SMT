@@ -88,7 +88,7 @@ class Permission_Manager(Common_Manager):
 
         self.join_node(root, grant, "subject_name", "CN=/"+group_name)
         validity = self.join_layer(root, grant, "validity")
-        #allow_rule1 = self.join_layer(root, grant, "start_rule")
+        allow_rule1 = self.join_layer(root, grant, "allow_rule")
         allow_rule2 = self.join_layer(root, grant, "allow_rule")
         self.join_node(root, grant, "default", "DENY")
 
@@ -96,9 +96,9 @@ class Permission_Manager(Common_Manager):
         self.join_node(root, validity, "not_before", start_time)
         self.join_node(root, validity, "not_after", end_time)
 
-        domains = self.join_layer(root, allow_rule2, "domains")
-        publish = self.join_layer(root, allow_rule2, "publish")
-        subscribe = self.join_layer(root, allow_rule2, "subscribe")
+        domains = self.join_layer(root, allow_rule1, "domains")
+        publish = self.join_layer(root, allow_rule1, "publish")
+        subscribe = self.join_layer(root, allow_rule1, "subscribe")
 
         self.join_node(root, domains, "id", "0")
 
