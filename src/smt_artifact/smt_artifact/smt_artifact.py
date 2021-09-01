@@ -24,6 +24,8 @@ _DEFAULT_COMMON_NAME = 'ros2smt'
 class SMT_ARTIFACT():
     def __init__(self, group_policies, parent_dir='./smt_keystore', use_keycer_in_keystore=None,keystore_mode = "single"):
         self.group_policies = group_policies
+        print("Policies to generate artifact:")
+        print(self.group_policies)
         if group_policies == []:
             raise ValueError
 
