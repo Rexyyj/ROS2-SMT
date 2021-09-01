@@ -1,11 +1,11 @@
 # ROS2-SMT
-ROS2 Security Management Tool (ROS2-SMT) aims at making easier the configuration to enable ROS2 security in complex ROS2 system. The main functions it provides include automatically detect and record the existing nodes in the system, automatically analysis node relationship and automatically generate corresponding security artifacts. In addition, it will provide the function to monitor the secure ROS2 system and perform the performance analysis(Under developing)
+ROS2 Security Management Tool (ROS2-SMT) aims at making easier the configuration to enable ROS2 security in complex ROS2 system. The main functions it provides include automatically detect and record the existing nodes in the system, automatically analysis node relationship and automatically generate corresponding security artifacts. In addition, it will provide the function to monitor the secure ROS2 system and perform the performance analysis(currently the entire system is under developing)
 
 # Usage
 ## 1. Build ROS2-SMT in pre-config docker container
    You should first have [Docker](https://docs.docker.com/engine/install/ubuntu/) installed on you PC. Then you can find ROS2-SMT docker image with:
    ```bash
-    $ docker pull rexyyj/ros2-smt:latest
+    $ docker pull rexyyj/ros2-smt:0.1.1
    ```
    Then, you can run container according to the network configuration of the existing ROS2 system and run ROS2-SMT.
    ```bash
@@ -14,13 +14,12 @@ ROS2 Security Management Tool (ROS2-SMT) aims at making easier the configuration
     $ source env.sh
     $ ros2 run ros2_smt smt_run
 
-    # To be simplify!
    ```
    
    
 ## 2. Build ROS2-SMT form source
 These instructions are tested under Ubuntu 20.04 system
-1. Install ROS2 foxy in your system
+1. Install souce-built ROS2 foxy in your system
 2. Install openjdk-8-jdk and openjdk-8-jre 
 3. Install argparse, pyspark and graphframes with pip3
 4. clone ROS2-SMT with:
@@ -42,3 +41,8 @@ In the design of ROS2-SMT, it will be able to perform the following functions:
 
 
 # Roadmap
+* Current stage
+  * 2021.04-2021.08 --> Prove of basic idea
+
+* Future stage
+  * Pending...
