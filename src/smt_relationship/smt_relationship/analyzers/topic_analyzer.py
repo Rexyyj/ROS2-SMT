@@ -66,11 +66,13 @@ class Topic_Analyzer(Analyzer):
             raise ValueError()
 
     def members_to_policy(self, members):
+        pub = set()
+        sub = set()
         for member in members:
-            pub = set([row.type_name for row in self._graph.edges.filter(
-                "src=='"+member+"'").select("type_name").collect()])
-            sub = set([row.type_name for row in self._graph.edges.filter(
-                "dst=='"+member+"'").select("type_name").collect()])
+            pub  =set.union(pub, set([row.type_name for row in self._graph.edges.filter(
+                "src=='"+member+"'").select("type_name").collect()]))
+            sub  =set.union(sub, set([row.type_name for row in self._graph.edges.filter(
+                "dst=='"+member+"'").select("type_name").collect()]))
         return {"members": list(members), "allowPub": list(pub), "allowSub": list(sub)}
 
     def get_group_policy(self):

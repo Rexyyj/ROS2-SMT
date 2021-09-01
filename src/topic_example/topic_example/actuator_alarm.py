@@ -39,7 +39,7 @@ class Alarm(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    alarm = Alarm("light0")
+    alarm = Alarm("alarm0")
 
     rclpy.spin(alarm)
 

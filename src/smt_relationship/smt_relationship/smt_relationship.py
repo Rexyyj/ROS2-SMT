@@ -62,25 +62,27 @@ class SMT_RELATIONSHIP:
 
 
     def test(self):
-        v = self.vertices
-        e = self.edges.filter("type=='topic'")
-        g = GraphFrame(v, e)
-        print(g.vertices.count())
-        print(g.edges.count())
-        topicAnalyzer = Topic_Analyzer(v, e)
-        topicAnalyzer.remove_all_hidden()
-        topicAnalyzer.remove_default_edges()
-        topicAnalyzer.create_graph()
-        g = topicAnalyzer.get_graph()
-        print(g.vertices.count())
-        print(g.edges.count())
-        topicAnalyzer.RBAC_grouping(mode="src-mid-dst")
-        print(topicAnalyzer.get_group_policy())
+        # v = self.vertices
+        # e = self.edges.filter("type=='topic'")
+        # g = GraphFrame(v, e)
+        # print(g.vertices.count())
+        # print(g.edges.count())
+        # topicAnalyzer = Topic_Analyzer(v, e)
+        # topicAnalyzer.remove_all_hidden()
+        # topicAnalyzer.remove_default_edges()
+        # topicAnalyzer.create_graph()
+        # g = topicAnalyzer.get_graph()
+        # print(g.vertices.count())
+        # print(g.edges.count())
+        # topicAnalyzer.RBAC_grouping(mode="src-mid-dst")
+        # print(topicAnalyzer.get_group_policy())
+        config={"remove_hidden":"True","remove_default":"True","grouping_method":"RBAC","mode":"namespace"}
+        print(self.analysis(config))
 
 
 def main():
     print('Hi from smt_relationship.')
-    print(sys.version_info)
+#     print(sys.version_info)
     rela = SMT_RELATIONSHIP()
     rela.test()
 
